@@ -23,10 +23,17 @@ function App() {
     { icon: <CircleCheck size={40} />, title: "Uzman Kadro", desc: "15 yıllık tecrübe ile profesyonel teknik destek." }
   ];
 
+  const errorCodes = [
+    { brand: "DemirDöküm", code: "F01", desc: "Aşırı Isınma Hatası", solution: "Petek vanalarını kontrol edin ve kombiyi resetleyin." },
+    { brand: "DemirDöküm", code: "F02", desc: "Sıcak Su Sensör Hatası", solution: "Teknik servis müdahalesi gereklidir." },
+    { brand: "Vaillant", code: "F28", desc: "Ateşleme Hatası", solution: "Gaz vanasının açık olduğundan emin olun." },
+    { brand: "Ariston", code: "501", desc: "Alev Yok Hatası", solution: "Gaz akışını kontrol edin ve resetleyin." }
+  ];
+
   const faqs = [
     { q: "Kombi bakımı ne sıklıkla yapılmalı?", a: "Verimlilik ve güvenlik için kombi bakımı yılda en az bir kez, tercihen kış sezonu öncesinde yapılmalıdır." },
-    { q: "Arıza durumunda servis ne kadar sürede gelir?", a: "Genellikle servis talebinizi oluşturduğunuz gün içerisinde adresinize ulaşıyoruz." },
-    { q: "Hangi markalara hizmet veriyorsunuz?", a: "Vaillant, Demirdöküm, Protherm, Ariston başta olmak üzere tüm popüler markalara hizmet vermekteyiz." }
+    { q: "Arıza durumunda servis ne kadar sürede gelir?", a: "Hızlı servis prensibimizle, talebinizi oluşturduğunuz gün içerisinde adresinize ulaşıyoruz." },
+    { q: "DemirDöküm yetkili servis belgeniz var mı?", a: "Evet, tüm teknisyenlerimiz gerekli eğitimleri almış ve sertifikalı uzmanlardır." }
   ];
 
   return (
@@ -34,11 +41,16 @@ function App() {
       {/* 1. NAVBAR */}
       <nav className="navbar">
         <div className="container nav-flex">
-          <div className="logo">KOMBİ<span>USTASI</span></div>
+          <div className="logo">
+            <div className="logo-icon">D</div>
+            Demir<span>Döküm</span>
+          </div>
           <ul className="nav-links">
             <li><a href="#home" className="nav-item">Anasayfa</a></li>
-            <li><a href="#about" className="nav-item">Hakkımızda</a></li>
-            <li><a href="#services" className="nav-item">Hizmetlerimiz</a></li>
+            <li><a href="#services" className="nav-item">Hizmetler</a></li>
+            <li><a href="#errors" className="nav-item">Hata Kodları</a></li>
+            <li><a href="#valve-guide" className="nav-item">Vana Rehberi</a></li>
+            <li><a href="#certificates" className="nav-item">Belgelerimiz</a></li>
             <li><a href="#contact" className="nav-item">İletişim</a></li>
           </ul>
           <a href="tel:+905555555555" className="nav-btn">Hemen Ara</a>
@@ -49,15 +61,16 @@ function App() {
       <section id="home" className="hero-section">
         <div className="container hero-grid">
           <div className="hero-content" data-aos="fade-right">
-            <h1>Evinizdeki Sıcaklık, <br/>Bizim <span>Güvencemiz</span></h1>
-            <p>Profesyonel kombi bakım, onarım ve montaj hizmetlerinde 15 yıllık tecrübe ile yanınızdayız. Güvenilir, hızlı ve garantili çözümler.</p>
+            <div className="badge-small">7/24 Teknik Servis</div>
+            <h1>DemirDöküm Uzman <br/><span>Teknik Servis</span></h1>
+            <p>Çankırı ve çevresinde profesyonel kombi bakım, onarım ve montaj hizmetleri. 15 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
             <div className="hero-actions">
-              <a href="#contact" className="btn-orange">Ücretsiz Fiyat Al</a>
+              <a href="tel:+905555555555" className="btn-orange">Servis Çağır</a>
               <a href="#services" className="btn-outline">Hizmetlerimiz</a>
             </div>
           </div>
           <div className="hero-image" data-aos="fade-left">
-            <img src="/usta.png" alt="Teknik Servis Ustası" className="usta-img" />
+            <img src="/usta.png" alt="DemirDöküm Teknik Servis" className="usta-img" />
           </div>
         </div>
       </section>
@@ -75,27 +88,25 @@ function App() {
         <div className="container">
           <div className="about-grid">
             <div className="about-info" data-aos="fade-up">
-              <h2>Biz Kimiz?</h2>
-              <p>2010 yılından bu yana Çankırı genelinde kombi teknik servisi olarak hizmet veriyoruz. Müşteri memnuniyetini odağımıza alarak, evinizdeki konforun kesilmemesi için çalışıyoruz.</p>
+              <h2>Profesyonel Hizmet Anlayışı</h2>
+              <p>2010 yılından bu yana Çankırı genelinde DemirDöküm başta olmak üzere tüm marka kombiler için teknik servis hizmeti sunmaktayız. Eğitimli kadromuz ve modern ekipmanlarımızla, ısıtma sistemlerinizin en yüksek verimle çalışmasını sağlıyoruz.</p>
               <div className="stats-grid">
                 <div className="stat-item">
                   <h4>5000+</h4>
                   <p>Mutlu Müşteri</p>
                 </div>
                 <div className="stat-item">
-                  <h4>15</h4>
-                  <p>Yıllık Tecrübe</p>
+                  <h4>1000+</h4>
+                  <p>Teşekkür Belgesi</p>
                 </div>
                 <div className="stat-item">
-                  <h4>24/7</h4>
-                  <p>Destek Hattı</p>
+                  <h4>Hızlı</h4>
+                  <p>Aynı Gün Hizmet</p>
                 </div>
               </div>
             </div>
             <div className="about-image" data-aos="fade-left">
-               <div style={{background: 'var(--primary)', height: '300px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>
-                  <Wrench size={80} opacity={0.3} />
-               </div>
+               <img src="/certificates_badge.png" alt="1000+ Teşekkür Belgesi" style={{width: '100%', borderRadius: '20px'}} />
             </div>
           </div>
         </div>
@@ -104,18 +115,80 @@ function App() {
       {/* 5. SERVICES SECTION */}
       <section id="services" className="services-section">
         <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Hizmet Verdiğimiz Markalar</h2>
+          <h2 className="section-title" data-aos="fade-up">Uzmanlık Alanlarımız</h2>
           <div className="services-grid">
             {brands.map((brand, i) => (
               <div key={i} className="service-card" data-aos="fade-up" data-aos-delay={i * 100}>
                 <div className="card-img-box">
                   <img src={brand.img} alt={brand.name} />
                 </div>
-                <h3>{brand.name}</h3>
-                <p>Orijinal yedek parça ve profesyonel arıza tespiti ile {brand.name} servis hizmeti.</p>
-                <button className="card-btn">Soru Sor <ChevronRight size={16} /></button>
+                <h3>{brand.name} Servisi</h3>
+                <p>Orijinal yedek parça ve profesyonel arıza tespiti ile {brand.name} garantili bakım hizmeti.</p>
+                <button className="card-btn">Detaylı Bilgi <ChevronRight size={16} /></button>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: ERROR CODES SECTION */}
+      <section id="errors" className="errors-section">
+        <div className="container">
+          <h2 className="section-title" data-aos="fade-up">Kombi Hata Kodları</h2>
+          <p className="section-subtitle">Kombinizde beliren hata kodunun anlamını öğrenin ve ne yapmanız gerektiğini görün.</p>
+          <div className="errors-grid">
+            {errorCodes.map((err, i) => (
+              <div key={i} className="error-card" data-aos="fade-up">
+                <div className="error-header">
+                  <span className="brand-tag">{err.brand}</span>
+                  <span className="error-code">{err.code}</span>
+                </div>
+                <h3>{err.desc}</h3>
+                <p><strong>Çözüm:</strong> {err.solution}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: VALVE GUIDE SECTION */}
+      <section id="valve-guide" className="valve-guide-section">
+        <div className="container">
+          <div className="guide-grid">
+            <div className="guide-image" data-aos="fade-right">
+              <img src="/radiator_valve_guide.png" alt="Petek Vana Bağlantı Rehberi" />
+            </div>
+            <div className="guide-content" data-aos="fade-left">
+              <h2>Petek Vanası Nasıl Bağlanmalı?</h2>
+              <p>Doğru vana bağlantısı, peteklerinizin tam verimle ısınmasını sağlar ve enerji tasarrufu sağlar. Dikkat etmeniz gerekenler:</p>
+              <ul className="guide-list">
+                <li><CircleCheck size={20} /> Sıcak su girişi her zaman üst vanadan yapılmalıdır.</li>
+                <li><CircleCheck size={20} /> Dönüş suyu çıkışı alt vanadan sağlanmalıdır.</li>
+                <li><CircleCheck size={20} /> Çapraz bağlantı büyük peteklerde daha yüksek verim sağlar.</li>
+                <li><CircleCheck size={20} /> Vana çevresinde su kaçağı kontrolü düzenli yapılmalıdır.</li>
+              </ul>
+              <a href="tel:+905555555555" className="btn-orange">Vana Değişimi İçin Ara</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: CERTIFICATES SECTION */}
+      <section id="certificates" className="certificates-section">
+        <div className="container">
+          <h2 className="section-title" data-aos="fade-up">Yetki ve Başarı Belgelerimiz</h2>
+          <div className="cert-intro">
+            <div className="cert-text">
+              <h3>1000'den Fazla Teşekkür ve Takdir Belgesi</h3>
+              <p>Sunduğumuz kaliteli hizmet ve müşteri memnuniyeti odaklı çalışmamızın karşılığını, müşterilerimizden aldığımız binlerce teşekkür belgesi ile taçlandırıyoruz. Hızlı servis ve kesin çözüm ilkemizden asla ödün vermiyoruz.</p>
+            </div>
+            <div className="cert-showcase" data-aos="zoom-in">
+              <img src="/usta.png" alt="Yetki Belgesi" className="main-cert" /> {/* User's certificate image should go here if available */}
+              <div className="cert-overlay">
+                <h4>HIZLI HİZMET</h4>
+                <p>Aynı Gün Müdahale</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -190,25 +263,28 @@ function App() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <div className="logo" style={{color:'white'}}>KOMBİ<span>USTASI</span></div>
-              <p style={{marginTop: '20px'}}>Çankırı'nın tüm noktalarına 7/24 hizmet veren profesyonel kombi teknik servisi.</p>
+              <div className="logo" style={{color:'white'}}>
+                <div className="logo-icon">D</div>
+                Demir<span>Döküm</span>
+              </div>
+              <p style={{marginTop: '20px'}}>Çankırı'nın tüm noktalarına 7/24 hizmet veren DemirDöküm uzman teknik servisi.</p>
             </div>
             <div className="footer-links">
               <h4>Hızlı Linkler</h4>
               <ul>
                 <li><a href="#home">Anasayfa</a></li>
-                <li><a href="#about">Hakkımızda</a></li>
                 <li><a href="#services">Hizmetler</a></li>
-                <li><a href="#contact">İletişim</a></li>
+                <li><a href="#errors">Hata Kodları</a></li>
+                <li><a href="#valve-guide">Vana Rehberi</a></li>
               </ul>
             </div>
             <div className="footer-links">
-              <h4>Hizmetler</h4>
+              <h4>Teknik Destek</h4>
               <ul>
-                <li><a href="#">Kombi Bakımı</a></li>
-                <li><a href="#">Arıza Onarım</a></li>
-                <li><a href="#">Petek Temizliği</a></li>
-                <li><a href="#">Kombi Montajı</a></li>
+                <li><a href="#errors">Arıza Kodları</a></li>
+                <li><a href="#valve-guide">Vana Bağlantısı</a></li>
+                <li><a href="#contact">Servis Talebi</a></li>
+                <li><a href="#about">Sertifikalarımız</a></li>
               </ul>
             </div>
             <div className="footer-links">
@@ -221,7 +297,7 @@ function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2025 Tüm Hakları Saklıdır. Kombi Bakım ve Onarım Merkezi.</p>
+            <p>© 2025 DemirDöküm Teknik Servis. Tüm Hakları Saklıdır.</p>
           </div>
         </div>
       </footer>
