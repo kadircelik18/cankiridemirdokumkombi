@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
-import { Phone, MessageSquare, Mail, MapPin, Instagram, Facebook, ShieldCheck, Clock, Wrench, CircleCheck, ChevronRight, CircleHelp } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Phone, MessageSquare, Mail, MapPin, Instagram, Facebook, ShieldCheck, Clock, Wrench, CircleCheck, ChevronRight, CircleHelp, Menu, X } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const brands = [
     { name: "Vaillant", img: "/vaillant-logo-272x72-1888261.png", color: "#008f7a" },
@@ -49,15 +53,19 @@ function App() {
           <div className="logo">
             <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="navbar-logo-img" />
           </div>
-          <ul className="nav-links">
-            <li><a href="#home" className="nav-item">Anasayfa</a></li>
-            <li><a href="#services" className="nav-item">Hizmetler</a></li>
-            <li><a href="#errors" className="nav-item">Hata Kodları</a></li>
-            <li><a href="#valve-guide" className="nav-item">Vana Rehberi</a></li>
-            {/* <li><a href="#certificates" className="nav-item">Belgelerimiz</a></li> */}
-            <li><a href="#contact" className="nav-item">İletişim</a></li>
+          
+          <div className="hamburger" onClick={toggleMenu}>
+            {menuOpen ? <X size={30} /> : <Menu size={30} />}
+          </div>
+
+          <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+            <li><a href="#home" className="nav-item" onClick={() => setMenuOpen(false)}>Anasayfa</a></li>
+            <li><a href="#services" className="nav-item" onClick={() => setMenuOpen(false)}>Hizmetler</a></li>
+            <li><a href="#errors" className="nav-item" onClick={() => setMenuOpen(false)}>Hata Kodları</a></li>
+            <li><a href="#valve-guide" className="nav-item" onClick={() => setMenuOpen(false)}>Vana Rehberi</a></li>
+            <li><a href="tel:+905555555555" className="nav-btn mobile-only">Hemen Ara</a></li>
           </ul>
-          <a href="tel:+905555555555" className="nav-btn">Hemen Ara</a>
+          <a href="tel:+905555555555" className="nav-btn desktop-only">Hemen Ara</a>
         </div>
       </nav>
 

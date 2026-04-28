@@ -26,6 +26,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  touch-action: pan-x pan-y; /* Pinch-zoom'u engellemek için */
 }
 
 h1, h2, h3, h4, .logo {
@@ -136,15 +137,24 @@ h1, h2, h3, h4, .logo {
   font-size: 14px;
 }
 
-.nav-btn:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+.nav-btn.desktop-only {
+  display: block;
+}
+
+.nav-btn.mobile-only {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  color: var(--primary);
 }
 
 /* HERO SECTION */
 .hero-section {
   padding: 220px 0 160px;
+  min-height: 100vh; /* Ekranı tam kaplasın */
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('/ddarkaplan.png');
   background-size: cover;
   background-position: center;
@@ -152,6 +162,8 @@ h1, h2, h3, h4, .logo {
   color: var(--secondary);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .hero-content {
@@ -744,6 +756,58 @@ h1, h2, h3, h4, .logo {
 
 /* RESPONSIVE ADDITIONS */
 @media (max-width: 992px) {
+  .hamburger {
+    display: block;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: 0.5s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-btn.desktop-only {
+    display: none;
+  }
+
+  .nav-btn.mobile-only {
+    display: block;
+    width: 200px;
+    text-align: center;
+  }
+
+  .hero-section {
+    padding: 120px 0 80px;
+    text-align: center;
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
   .guide-grid, .cert-intro {
     grid-template-columns: 1fr;
     text-align: center;
