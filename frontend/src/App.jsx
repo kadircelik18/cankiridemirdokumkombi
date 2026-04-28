@@ -10,9 +10,9 @@ function App() {
   }, []);
 
   const brands = [
-    { name: "Vaillant", img: "/brand/vaillant.png", color: "#008f7a" },
-    { name: "Demirdöküm", img: "/brand/demirdokum.png", color: "#e30613" },
-    { name: "Protherm", img: "/brand/protherm.png", color: "#f58220" },
+    { name: "Vaillant", img: "/vaillant-logo-272x72-1888261.png", color: "#008f7a" },
+    { name: "Demirdöküm", img: "/dd-logo-2966321.png", color: "#004a99" },
+    { name: "Protherm", img: "/protherm_logo.png", color: "#ff0000" },
     { name: "Ariston", img: "/brand/ariston.png", color: "#cd2027" }
   ];
 
@@ -24,10 +24,15 @@ function App() {
   ];
 
   const errorCodes = [
-    { brand: "DemirDöküm", code: "F01", desc: "Aşırı Isınma Hatası", solution: "Petek vanalarını kontrol edin ve kombiyi resetleyin.", color: "#e30613" },
-    { brand: "DemirDöküm", code: "F02", desc: "Sıcak Su Sensör Hatası", solution: "Teknik servis müdahalesi gereklidir.", color: "#e30613" },
+    { brand: "DemirDöküm", code: "F01", desc: "Aşırı Isınma Hatası", solution: "Petek vanalarını kontrol edin ve kombiyi resetleyin.", color: "#004a99" },
+    { brand: "DemirDöküm", code: "F02", desc: "Sıcak Su Sensör Hatası", solution: "Teknik servis müdahalesi gereklidir.", color: "#004a99" },
+    { brand: "DemirDöküm", code: "F04", desc: "Ateşleme Hatası", solution: "Gaz akışını ve iyonizasyonu kontrol edin.", color: "#004a99" },
     { brand: "Vaillant", code: "F28", desc: "Ateşleme Hatası", solution: "Gaz vanasının açık olduğundan emin olun.", color: "#008f7a" },
-    { brand: "Ariston", code: "501", desc: "Alev Yok Hatası", solution: "Gaz akışını kontrol edin ve resetleyin.", color: "#cd2027" }
+    { brand: "Vaillant", code: "F22", desc: "Kuru Yanma (Su Az)", solution: "Kombi basıncını 1.5 bar seviyesine getirin.", color: "#008f7a" },
+    { brand: "Protherm", code: "F0", desc: "Düşük Su Basıncı", solution: "Basınç 1.5 bar olana kadar su basın.", color: "#ff0000" },
+    { brand: "Protherm", code: "F1", desc: "Aşırı Isınma Emniyeti", solution: "Kombiyi resetleyin, vana kapalıysa açın.", color: "#ff0000" },
+    { brand: "Ariston", code: "501", desc: "Alev Yok Hatası", solution: "Gaz akışını kontrol edin ve resetleyin.", color: "#cd2027" },
+    { brand: "Ariston", code: "101", desc: "Aşırı Isınma", solution: "Reset butonuna basın ve vanaları kontrol edin.", color: "#cd2027" }
   ];
 
   const faqs = [
@@ -69,9 +74,6 @@ function App() {
               <a href="#services" className="btn-outline">Hizmetlerimiz</a>
             </div>
           </div>
-          <div className="hero-image" data-aos="fade-left">
-            <img src="/usta.png" alt="DemirDöküm Teknik Servis" className="usta-img" />
-          </div>
         </div>
       </section>
 
@@ -106,7 +108,7 @@ function App() {
               </div>
             </div>
             <div className="about-image" data-aos="fade-left">
-               <img src="/certificates_badge.png" alt="1000+ Teşekkür Belgesi" style={{width: '100%', borderRadius: '20px'}} />
+               <img src="/teeşkkür bellges.png" alt="1000+ Teşekkür Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
             </div>
           </div>
         </div>
@@ -156,7 +158,7 @@ function App() {
         <div className="container">
           <div className="guide-grid">
             <div className="guide-image" data-aos="fade-right">
-              <img src="/radiator_valve_guide.png" alt="Petek Vana Bağlantı Rehberi" />
+              <img src="/kombivana .png" alt="Petek Vana Bağlantı Rehberi" />
             </div>
             <div className="guide-content" data-aos="fade-left">
               <h2>Petek Vanası Nasıl Bağlanmalı?</h2>
@@ -183,7 +185,7 @@ function App() {
               <p>Sunduğumuz kaliteli hizmet ve müşteri memnuniyeti odaklı çalışmamızın karşılığını, müşterilerimizden aldığımız binlerce teşekkür belgesi ile taçlandırıyoruz. Hızlı servis ve kesin çözüm ilkemizden asla ödün vermiyoruz.</p>
             </div>
             <div className="cert-showcase" data-aos="zoom-in">
-              <img src="/usta.png" alt="Yetki Belgesi" className="main-cert" /> {/* User's certificate image should go here if available */}
+              <img src="/teeşkkür bellges.png" alt="Yetki Belgesi" className="main-cert" />
               <div className="cert-overlay">
                 <h4>HIZLI HİZMET</h4>
                 <p>Aynı Gün Müdahale</p>
@@ -224,37 +226,13 @@ function App() {
         </div>
       </section>
 
-      {/* 8. CONTACT SECTION */}
-      <section id="contact" className="contact-section">
-        <div className="container">
-          <div className="contact-grid">
-            <div className="contact-form-box" data-aos="fade-right">
-              <h2>Bize Ulaşın</h2>
-              <form className="contact-form">
-                <div className="form-group">
-                  <input type="text" placeholder="Adınız Soyadınız" required />
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="E-posta Adresiniz" required />
-                </div>
-                <div className="form-group">
-                  <textarea placeholder="Mesajınız veya Kombi Arızanız" rows="5" required></textarea>
-                </div>
-                <button type="submit" className="submit-btn" disabled>Gönder (Yakında Aktif)</button>
-              </form>
-            </div>
-            <div className="map-info" data-aos="fade-left">
-              <div className="contact-details">
-                <div className="detail-item"><Phone size={24}/> <span>0555 555 55 55</span></div>
-                <div className="detail-item"><Mail size={24}/> <span>destek@kombiustasi.com</span></div>
-                <div className="detail-item"><MapPin size={24}/> <span>Çankırı Merkez</span></div>
-              </div>
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48726.33230325!2d33.616667!3d40.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40816b80173e6357%3A0x6b772c676d214f4e!2s%C3%87ank%C4%B1r%C4%B1%2C%20Merkez%2F%C3%87ank%C4%B1r%C4%B1!5e0!3m2!1str!2str!4v1712438176000!5m2!1str!2str" 
-                width="100%" height="300" style={{border:0, borderRadius:'15px', boxShadow: 'var(--shadow-md)'}} allowFullScreen="" loading="lazy">
-              </iframe>
-            </div>
-          </div>
+      {/* 8. CONTACT SECTION - FULL WIDTH MAP */}
+      <section id="contact" className="contact-section" style={{padding: 0}}>
+        <div className="full-width-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48726.33230325!2d33.616667!3d40.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40816b80173e6357%3A0x6b772c676d214f4e!2s%C3%87ank%C4%B1r%C4%B1%2C%20Merkez%2F%C3%87ank%C4%B1r%C4%B1!5e0!3m2!1str!2str!4v1712438176000!5m2!1str!2str" 
+            width="100%" height="500" style={{border:0, display: 'block'}} allowFullScreen="" loading="lazy">
+          </iframe>
         </div>
       </section>
 
