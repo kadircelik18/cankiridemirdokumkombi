@@ -47,10 +47,7 @@ function App() {
       <nav className="navbar">
         <div className="container nav-flex">
           <div className="logo">
-              <div className="logo-icon">D</div>
-            Demir<span>Döküm</span>
-          {/*   <div className="logo-icon">D</div>
-            Demir<span>Döküm</span> */}
+            <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="navbar-logo-img" />
           </div>
           <ul className="nav-links">
             <li><a href="#home" className="nav-item">Anasayfa</a></li>
@@ -243,9 +240,8 @@ function App() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <div className="logo" style={{color:'white'}}>
-                <div className="logo-icon">D</div>
-                Demir<span>Döküm</span>
+              <div className="logo">
+                <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="footer-logo-img" />
               </div>
               <p style={{marginTop: '20px'}}>Çankırı'nın tüm noktalarına 7/24 hizmet veren DemirDöküm uzman teknik servisi.</p>
             </div>

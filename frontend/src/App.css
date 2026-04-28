@@ -60,25 +60,21 @@ h1, h2, h3, h4, .logo {
 }
 
 .logo {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--primary);
-  letter-spacing: -1px;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--primary);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
+.navbar-logo-img {
+  height: 45px;
+  width: auto;
+  display: block;
+}
+
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1); /* Logo beyaz görünsün diye */
 }
 
 .logo span {
