@@ -146,8 +146,9 @@ h1, h2, h3, h4, .logo {
 .hero-section {
   padding: 220px 0 160px;
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('/ddarkaplan.png');
-  background-size: cover;
-  background-position: center;
+  background-size: 85%; /* Yüzde 15-20 daha uzaklaştırmak için */
+  background-repeat: no-repeat;
+  background-position: left center;
   background-attachment: fixed;
   color: var(--secondary);
   position: relative;
@@ -262,7 +263,7 @@ h1, h2, h3, h4, .logo {
 
 /* VEHICLE ANIMATION */
 .vehicle-section {
-  height: 180px;
+  height: 126px; /* %30 küçültüldü */
   background: #0a0a0a;
   position: relative;
   overflow: hidden;
@@ -272,9 +273,9 @@ h1, h2, h3, h4, .logo {
 
 .road-animation {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   width: 200%;
-  height: 4px;
+  height: 3px;
   background: repeating-linear-gradient(90deg, #fff 0, #fff 40px, transparent 40px, transparent 80px);
   animation: road 1s linear infinite;
   opacity: 0.3;
@@ -287,7 +288,7 @@ h1, h2, h3, h4, .logo {
 
 .doblo-track {
   position: absolute;
-  width: 240px;
+  width: 168px; /* %30 küçültüldü */
   animation: drive 12s linear infinite;
   z-index: 2;
 }
