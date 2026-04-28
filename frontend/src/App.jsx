@@ -24,7 +24,7 @@ function App() {
     { icon: <ShieldCheck size={40} />, title: "%100 Garanti", desc: "Yapılan tüm işlemler servis garantisi altındadır." },
     { icon: <Clock size={40} />, title: "Hızlı Servis", desc: "Aynı gün içinde arıza tespiti ve tamir imkanı." },
     { icon: <Wrench size={40} />, title: "Orijinal Parça", desc: "Sadece üretici onaylı orijinal yedek parçalar kullanılır." },
-    { icon: <CircleCheck size={40} />, title: "Uzman Kadro", desc: "15 yıllık tecrübe ile profesyonel teknik destek." }
+    { icon: <CircleCheck size={40} />, title: "Uzman Kadro", desc: "30 yıllık tecrübe ile profesyonel teknik destek." }
   ];
 
   const errorCodes = [
@@ -63,9 +63,9 @@ function App() {
             <li><a href="#services" className="nav-item" onClick={() => setMenuOpen(false)}>Hizmetler</a></li>
             <li><a href="#errors" className="nav-item" onClick={() => setMenuOpen(false)}>Hata Kodları</a></li>
             <li><a href="#valve-guide" className="nav-item" onClick={() => setMenuOpen(false)}>Vana Rehberi</a></li>
-            <li><a href="tel:+905555555555" className="nav-btn mobile-only">Hemen Ara</a></li>
+            <li><a href="tel:+905444527090" className="nav-btn mobile-only">Hemen Ara</a></li>
           </ul>
-          <a href="tel:+905555555555" className="nav-btn desktop-only">Hemen Ara</a>
+          <a href="tel:+905444527090" className="nav-btn desktop-only">Hemen Ara</a>
         </div>
       </nav>
 
@@ -75,9 +75,9 @@ function App() {
           <div className="hero-content" data-aos="fade-right">
             <div className="badge-small">7/24 Teknik Servis</div>
             <h1>Çankırı'da DemirDöküm Uzman <br/><span>Teknik Servis</span></h1>
-            <p>Çankırı ve çevresinde profesyonel kombi bakım, onarım ve montaj hizmetleri. 15 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
+            <p>Çankırı ve çevresinde profesyonel kombi bakım, onarım ve montaj hizmetleri. 30 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
             <div className="hero-actions">
-              <a href="tel:+905555555555" className="btn-orange">Servis Çağır</a>
+              <a href="tel:+905444527090" className="btn-orange">Servis Çağır</a>
               <a href="#services" className="btn-outline">Hizmetlerimiz</a>
             </div>
           </div>
@@ -98,7 +98,7 @@ function App() {
           <div className="about-grid">
             <div className="about-info" data-aos="fade-up">
               <h2>Profesyonel Hizmet Anlayışı</h2>
-              <p>2010 yılından bu yana Çankırı genelinde DemirDöküm başta olmak üzere tüm marka kombiler için teknik servis hizmeti sunmaktayız. Eğitimli kadromuz ve modern ekipmanlarımızla, ısıtma sistemlerinizin en yüksek verimle çalışmasını sağlıyoruz.</p>
+              <p>1995 yılından bu yana Çankırı genelinde DemirDöküm başta olmak üzere tüm marka kombiler için teknik servis hizmeti sunmaktayız. Eğitimli kadromuz ve modern ekipmanlarımızla, ısıtma sistemlerinizin en yüksek verimle çalışmasını sağlıyoruz.</p>
               <div className="stats-grid">
                 <div className="stat-item">
                   <h4>5000+</h4>
@@ -176,7 +176,7 @@ function App() {
                 <li><CircleCheck size={20} /> Çapraz bağlantı büyük peteklerde daha yüksek verim sağlar.</li>
                 <li><CircleCheck size={20} /> Vana çevresinde su kaçağı kontrolü düzenli yapılmalıdır.</li>
               </ul>
-              <a href="tel:+905555555555" className="btn-orange">Vana Değişimi İçin Ara</a>
+              <a href="tel:+905444527090" className="btn-orange">Vana Değişimi İçin Ara</a>
             </div>
           </div>
         </div>
@@ -252,6 +252,8 @@ function App() {
                 <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="footer-logo-img" />
               </div>
               <p style={{marginTop: '20px'}}>Çankırı'nın tüm noktalarına 7/24 hizmet veren DemirDöküm uzman teknik servisi.</p>
+              <p style={{marginTop: '10px'}}><Mail size={16} style={{marginRight: '8px', verticalAlign: 'middle'}} /> cankiridemirdokumservis@gmail.com</p>
+              <p style={{marginTop: '5px'}}><Phone size={16} style={{marginRight: '8px', verticalAlign: 'middle'}} /> +90 544 452 70 90</p>
             </div>
             <div className="footer-links">
               <h4>Hızlı Linkler</h4>
