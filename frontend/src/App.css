@@ -145,31 +145,32 @@ h1, h2, h3, h4, .logo {
 /* HERO SECTION */
 .hero-section {
   padding: 220px 0 160px;
-  background: linear-gradient(rgba(0, 74, 153, 0.7), rgba(0, 0, 0, 0.5)), url('/ddarkaplan.png');/*  */
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('/ddarkaplan.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: white;
+  color: var(--secondary);
   position: relative;
   overflow: hidden;
 }
 
 .hero-content h1 {
-  color: white;
+  color: var(--secondary);
 }
 
 .hero-content p {
-  color: rgba(255, 255, 255, 0.9);
+  color: #333333; /* Siyaha yakın */
+  font-weight: 500;
 }
 
 .btn-outline {
-  border-color: white;
-  color: white;
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn-outline:hover {
-  background: white;
-  color: var(--primary);
+  background: var(--primary);
+  color: white;
 }
 
 .badge-small {
