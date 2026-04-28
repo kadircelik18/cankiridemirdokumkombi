@@ -796,8 +796,8 @@ h1, h2, h3, h4, .logo {
   }
 
   .hero-content {
-    margin: 0 auto;
-    text-align: center;
+    margin-left: auto;
+    text-align: right;
   }
 
   .hero-content h1 {
@@ -805,7 +805,7 @@ h1, h2, h3, h4, .logo {
   }
 
   .hero-actions {
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .guide-grid, .cert-intro {
