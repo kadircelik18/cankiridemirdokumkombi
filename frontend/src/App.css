@@ -262,22 +262,27 @@ h1, h2, h3, h4, .logo {
 
 /* VEHICLE ANIMATION */
 .vehicle-section {
-  height: 126px; /* %30 küçültüldü */
+  height: 80px; /* Daha ince bir yol */
   background: #0a0a0a;
-  position: relative;
-  overflow: hidden;
+  position: fixed; /* Sayfanın en altında sabit */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  overflow: visible; /* Arabanın taşabilmesi için */
   display: flex;
   align-items: center;
+  border-top: 4px solid #1a1a1a;
 }
 
 .road-animation {
   position: absolute;
-  bottom: 20px;
+  top: 50%; /* Yolun yarısından başlasın */
   width: 200%;
   height: 3px;
   background: repeating-linear-gradient(90deg, #fff 0, #fff 40px, transparent 40px, transparent 80px);
   animation: road 1s linear infinite;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 @keyframes road {
@@ -287,9 +292,11 @@ h1, h2, h3, h4, .logo {
 
 .doblo-track {
   position: absolute;
-  width: 168px; /* %30 küçültüldü */
+  width: 168px;
+  bottom: 10px; /* Yola 3 boyutlu basması için aşağı kaydırıldı */
   animation: drive 12s linear infinite;
-  z-index: 2;
+  z-index: 1001;
+  transform: perspective(500px) rotateX(10deg); /* Hafif 3D efekti */
 }
 
 .doblo-img {
