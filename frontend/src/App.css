@@ -141,8 +141,20 @@ h1, h2, h3, h4, .logo {
   display: block;
 }
 
-.nav-btn.mobile-only {
-  display: none;
+.nav-phone-link {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.nav-phone-link:hover {
+  color: var(--accent);
+  transform: scale(1.05);
 }
 
 .hamburger {
@@ -801,14 +813,14 @@ h1, h2, h3, h4, .logo {
     right: 0;
   }
 
-  .nav-btn.desktop-only {
+  .nav-phone-link.desktop-only {
     display: none;
   }
 
-  .nav-btn.mobile-only {
+  .nav-phone-link.mobile-only {
     display: block;
-    width: 200px;
-    text-align: center;
+    font-size: 1.5rem;
+    color: var(--primary);
   }
 
   .hero-section {
