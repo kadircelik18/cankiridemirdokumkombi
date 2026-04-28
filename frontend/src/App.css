@@ -145,7 +145,7 @@ h1, h2, h3, h4, .logo {
 /* HERO SECTION */
 .hero-section {
   padding: 220px 0 160px;
-  background: linear-gradient(rgba(0, 74, 153, 0.7), rgba(0, 0, 0, 0.5)), url('/arka.png');
+  background: linear-gradient(rgba(0, 74, 153, 0.7), rgba(0, 0, 0, 0.5)), url('/ddarkaplan.png');/*  */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

@@ -184,7 +184,7 @@ function App() {
               <p>Sunduğumuz kaliteli hizmet ve müşteri memnuniyeti odaklı çalışmamızın karşılığını, müşterilerimizden aldığımız binlerce teşekkür belgesi ile taçlandırıyoruz. Hızlı servis ve kesin çözüm ilkemizden asla ödün vermiyoruz.</p>
             </div>
             <div className="cert-showcase" data-aos="zoom-in">
-              <img src="/teeşkkür bellges.png" alt="Yetki Belgesi" className="main-cert" />
+              <img src="/usta.png" alt="Uzman Usta" className="main-cert" />
               <div className="cert-overlay">
                 <h4>HIZLI HİZMET</h4>
                 <p>Aynı Gün Müdahale</p>
