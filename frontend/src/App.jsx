@@ -63,9 +63,9 @@ function App() {
             <li><a href="#services" className="nav-item" onClick={() => setMenuOpen(false)}>Hizmetler</a></li>
             <li><a href="#errors" className="nav-item" onClick={() => setMenuOpen(false)}>Hata Kodları</a></li>
             <li><a href="#valve-guide" className="nav-item" onClick={() => setMenuOpen(false)}>Vana Rehberi</a></li>
-            <li><a href="tel:+905444527090" className="nav-phone-link mobile-only">0544 452 70 90</a></li>
+            <li><a href="tel:+905444527090" className="nav-phone-link mobile-only"><Phone size={20} /> 0544 452 70 90</a></li>
           </ul>
-          <a href="tel:+905444527090" className="nav-phone-link desktop-only">0544 452 70 90</a>
+          <a href="tel:+905444527090" className="nav-phone-link desktop-only"><Phone size={20} /> 0544 452 70 90</a>
         </div>
       </nav>
 
