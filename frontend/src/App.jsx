@@ -74,7 +74,7 @@ function App() {
         <div className="container hero-grid">
           <div className="hero-content" data-aos="fade-right">
             <div className="badge-small">7/24 Teknik Servis</div>
-            <h1>DemirDöküm Uzman <br/><span>Teknik Servis</span></h1>
+            <h1>Çankırı'da DemirDöküm Uzman <br/><span>Teknik Servis</span></h1>
             <p>Çankırı ve çevresinde profesyonel kombi bakım, onarım ve montaj hizmetleri. 15 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
             <div className="hero-actions">
               <a href="tel:+905555555555" className="btn-orange">Servis Çağır</a>
