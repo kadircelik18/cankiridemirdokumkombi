@@ -85,12 +85,12 @@ function App() {
       </section>
 
       {/* 3. DOBLO ANIMATION */}
-      <section className="vehicle-section">
+      {/* <section className="vehicle-section">
         <div className="road-animation"></div>
         <div className="doblo-track">
           <img src="/doblo.png" alt="Servis Aracı" className="doblo-img" />
         </div>
-      </section>
+      </section> */}
 
       {/* 4. ABOUT US SECTION */}
       <section id="about" className="about-section">
