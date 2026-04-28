@@ -13,11 +13,37 @@ function App() {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  const [selectedBrand, setSelectedBrand] = useState(null);
+
   const brands = [
-    { name: "Vaillant", img: "/vaillant-logo-272x72-1888261.png", color: "#008f7a" },
-    { name: "Demirdöküm", img: "/dd-logo-2966321.png", color: "#004a99" },
-    { name: "Protherm", img: "/protherm_logo.png", color: "#ff0000" },
-    { name: "Ariston", img: "/LogoAriston.svg", color: "#cd2027" }
+    { 
+      name: "Vaillant", 
+      img: "/vaillant-logo-272x72-1888261.png", 
+      color: "#008f7a",
+      models: "EcoTEC Intro, EcoTEC Plus, VUW TR Serisi, TurboMAG",
+      info: "Alman teknolojisi ile üretilen Vaillant kombiler, yüksek enerji verimliliği ve uzun ömürlü kullanım sunar. Akıllı kontrol sistemleri ile yakıt tasarrufu sağlar."
+    },
+    { 
+      name: "Demirdöküm", 
+      img: "/dd-logo-2966321.png", 
+      color: "#004a99",
+      models: "Nitromix, Atromix, Vintomix, Nepto, Atron Condense",
+      info: "Türkiye'nin öncü ısıtma markası DemirDöküm, geniş servis ağı ve kolay yedek parça imkanı ile en çok tercih edilen modelleri sunar. Yoğuşmalı teknolojide liderdir."
+    },
+    { 
+      name: "Protherm", 
+      img: "/protherm_logo.png", 
+      color: "#ff0000",
+      models: "Lynx Condense, Jaguar Condense, Puma Condense",
+      info: "Ekonomik ve performans odaklı çözümler sunan Protherm, kullanıcı dostu arayüzü ve sağlam yapısıyla bilinir. Fiyat/performans dengesi en yüksek markalardan biridir."
+    },
+    { 
+      name: "Ariston", 
+      img: "/LogoAriston.svg", 
+      color: "#cd2027",
+      models: "Clas One, Alteas One, Genus One, Cares Premium",
+      info: "İtalyan tasarımı ve ileri teknoloji ile birleşen Ariston kombiler, sessiz çalışma ve şık görünüm sunar. XtraTech paslanmaz çelik eşanjör ile dayanıklıdır."
+    }
   ];
 
   const whyUs = [
@@ -133,12 +159,55 @@ function App() {
                 </div>
                 <h3 style={{color: brand.color}}>{brand.name} Servisi</h3>
                 <p>Orijinal yedek parça ve profesyonel arıza tespiti ile {brand.name} garantili bakım hizmeti.</p>
-                <button className="card-btn" style={{borderColor: brand.color, color: brand.color}}>Detaylı Bilgi <ChevronRight size={16} /></button>
+                <button 
+                  className="card-btn-solid" 
+                  style={{background: brand.color}}
+                  onClick={() => {
+                    setSelectedBrand(brand);
+                    document.getElementById('brand-detail')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Detaylı Bilgi <ChevronRight size={16} />
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
+      
+      {/* BRAND DETAILS SECTION */}
+      {selectedBrand && (
+        <section id="brand-detail" className="brand-detail-section" data-aos="zoom-in">
+          <div className="container">
+            <div className="detail-card" style={{borderTop: `8px solid ${selectedBrand.color}`}}>
+              <div className="detail-grid">
+                <div className="detail-header">
+                  <img src={selectedBrand.img} alt={selectedBrand.name} className="detail-logo" />
+                  <h2>{selectedBrand.name} Uzmanlık Detayları</h2>
+                </div>
+                <div className="detail-body">
+                  <div className="detail-info">
+                    <h3>Marka Hakkında</h3>
+                    <p>{selectedBrand.info}</p>
+                  </div>
+                  <div className="detail-models">
+                    <h3>Tamir ve Satışı Yapılan Modeller</h3>
+                    <ul className="model-list">
+                      {selectedBrand.models.split(', ').map((model, idx) => (
+                        <li key={idx}><CircleCheck size={18} color={selectedBrand.color} /> {model}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="detail-footer">
+                   <button className="close-detail" onClick={() => setSelectedBrand(null)}>Kapat</button>
+                   <a href="tel:+905444527090" className="btn-orange" style={{background: selectedBrand.color, border: 'none', color: 'white'}}>Hemen Servis Çağır</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* NEW: ERROR CODES SECTION */}
       <section id="errors" className="errors-section">
