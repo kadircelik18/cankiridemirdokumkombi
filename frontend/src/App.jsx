@@ -47,8 +47,10 @@ function App() {
       <nav className="navbar">
         <div className="container nav-flex">
           <div className="logo">
-            <div className="logo-icon">D</div>
+              <div className="logo-icon">D</div>
             Demir<span>Döküm</span>
+          {/*   <div className="logo-icon">D</div>
+            Demir<span>Döküm</span> */}
           </div>
           <ul className="nav-links">
             <li><a href="#home" className="nav-item">Anasayfa</a></li>
@@ -108,7 +110,7 @@ function App() {
               </div>
             </div>
             <div className="about-image" data-aos="fade-left">
-               <img src="/teeşkkür bellges.png" alt="1000+ Teşekkür Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
+               <img src="/usta.png" alt="1000+ Teşekkür Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
             </div>
           </div>
         </div>
