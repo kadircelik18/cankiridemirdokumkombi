@@ -154,13 +154,26 @@ h1, h2, h3, h4, .logo {
   overflow: hidden;
 }
 
+.hero-content {
+  margin-left: auto;
+  text-align: right;
+  max-width: 800px;
+}
+
 .hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
   color: var(--secondary);
+  margin-bottom: 24px;
+  font-weight: 800;
 }
 
 .hero-content p {
+  font-size: 1.25rem;
   color: #333333; /* Siyaha yakın */
+  margin-bottom: 40px;
   font-weight: 500;
+  margin-left: auto;
 }
 
 .btn-outline {
@@ -186,30 +199,16 @@ h1, h2, h3, h4, .logo {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 60px;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.hero-content h1 {
-  font-size: 4rem;
-  line-height: 1.1;
-  color: var(--primary);
-  margin-bottom: 24px;
-  font-weight: 800;
-}
-
-.hero-content p {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  margin-bottom: 40px;
-  max-width: 600px;
-}
 
 .hero-actions {
   display: flex;
   gap: 16px;
+  justify-content: flex-end;
 }
 
 .btn-orange {
