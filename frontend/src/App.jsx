@@ -10,10 +10,10 @@ function App() {
   }, []);
 
   const brands = [
-    { name: "Vaillant", img: "/brand/vaillant.png" },
-    { name: "Demirdöküm", img: "/brand/demirdokum.png" },
-    { name: "Protherm", img: "/brand/protherm.png" },
-    { name: "Ariston", img: "/brand/ariston.png" }
+    { name: "Vaillant", img: "/brand/vaillant.png", color: "#008f7a" },
+    { name: "Demirdöküm", img: "/brand/demirdokum.png", color: "#e30613" },
+    { name: "Protherm", img: "/brand/protherm.png", color: "#f58220" },
+    { name: "Ariston", img: "/brand/ariston.png", color: "#cd2027" }
   ];
 
   const whyUs = [
@@ -24,10 +24,10 @@ function App() {
   ];
 
   const errorCodes = [
-    { brand: "DemirDöküm", code: "F01", desc: "Aşırı Isınma Hatası", solution: "Petek vanalarını kontrol edin ve kombiyi resetleyin." },
-    { brand: "DemirDöküm", code: "F02", desc: "Sıcak Su Sensör Hatası", solution: "Teknik servis müdahalesi gereklidir." },
-    { brand: "Vaillant", code: "F28", desc: "Ateşleme Hatası", solution: "Gaz vanasının açık olduğundan emin olun." },
-    { brand: "Ariston", code: "501", desc: "Alev Yok Hatası", solution: "Gaz akışını kontrol edin ve resetleyin." }
+    { brand: "DemirDöküm", code: "F01", desc: "Aşırı Isınma Hatası", solution: "Petek vanalarını kontrol edin ve kombiyi resetleyin.", color: "#e30613" },
+    { brand: "DemirDöküm", code: "F02", desc: "Sıcak Su Sensör Hatası", solution: "Teknik servis müdahalesi gereklidir.", color: "#e30613" },
+    { brand: "Vaillant", code: "F28", desc: "Ateşleme Hatası", solution: "Gaz vanasının açık olduğundan emin olun.", color: "#008f7a" },
+    { brand: "Ariston", code: "501", desc: "Alev Yok Hatası", solution: "Gaz akışını kontrol edin ve resetleyin.", color: "#cd2027" }
   ];
 
   const faqs = [
@@ -118,13 +118,13 @@ function App() {
           <h2 className="section-title" data-aos="fade-up">Uzmanlık Alanlarımız</h2>
           <div className="services-grid">
             {brands.map((brand, i) => (
-              <div key={i} className="service-card" data-aos="fade-up" data-aos-delay={i * 100}>
+              <div key={i} className="service-card" data-aos="fade-up" data-aos-delay={i * 100} style={{borderTop: `4px solid ${brand.color}`}}>
                 <div className="card-img-box">
                   <img src={brand.img} alt={brand.name} />
                 </div>
-                <h3>{brand.name} Servisi</h3>
+                <h3 style={{color: brand.color}}>{brand.name} Servisi</h3>
                 <p>Orijinal yedek parça ve profesyonel arıza tespiti ile {brand.name} garantili bakım hizmeti.</p>
-                <button className="card-btn">Detaylı Bilgi <ChevronRight size={16} /></button>
+                <button className="card-btn" style={{borderColor: brand.color, color: brand.color}}>Detaylı Bilgi <ChevronRight size={16} /></button>
               </div>
             ))}
           </div>
@@ -138,10 +138,10 @@ function App() {
           <p className="section-subtitle">Kombinizde beliren hata kodunun anlamını öğrenin ve ne yapmanız gerektiğini görün.</p>
           <div className="errors-grid">
             {errorCodes.map((err, i) => (
-              <div key={i} className="error-card" data-aos="fade-up">
+              <div key={i} className="error-card" data-aos="fade-up" style={{borderLeftColor: err.color}}>
                 <div className="error-header">
-                  <span className="brand-tag">{err.brand}</span>
-                  <span className="error-code">{err.code}</span>
+                  <span className="brand-tag" style={{color: err.color}}>{err.brand}</span>
+                  <span className="error-code" style={{background: err.color}}>{err.code}</span>
                 </div>
                 <h3>{err.desc}</h3>
                 <p><strong>Çözüm:</strong> {err.solution}</p>
