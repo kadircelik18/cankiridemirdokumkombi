@@ -13,7 +13,7 @@ function App() {
     { name: "Vaillant", img: "/vaillant-logo-272x72-1888261.png", color: "#008f7a" },
     { name: "Demirdöküm", img: "/dd-logo-2966321.png", color: "#004a99" },
     { name: "Protherm", img: "/protherm_logo.png", color: "#ff0000" },
-    { name: "Ariston", img: "/brand/ariston.png", color: "#cd2027" }
+    { name: "Ariston", img: "/LogoAriston.svg", color: "#cd2027" }
   ];
 
   const whyUs = [
@@ -54,7 +54,7 @@ function App() {
             <li><a href="#services" className="nav-item">Hizmetler</a></li>
             <li><a href="#errors" className="nav-item">Hata Kodları</a></li>
             <li><a href="#valve-guide" className="nav-item">Vana Rehberi</a></li>
-            <li><a href="#certificates" className="nav-item">Belgelerimiz</a></li>
+            {/* <li><a href="#certificates" className="nav-item">Belgelerimiz</a></li> */}
             <li><a href="#contact" className="nav-item">İletişim</a></li>
           </ul>
           <a href="tel:+905555555555" className="nav-btn">Hemen Ara</a>
@@ -175,7 +175,7 @@ function App() {
       </section>
 
       {/* NEW: CERTIFICATES SECTION */}
-      <section id="certificates" className="certificates-section">
+      {/* <section id="certificates" className="certificates-section">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Yetki ve Başarı Belgelerimiz</h2>
           <div className="cert-intro">
@@ -192,7 +192,7 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 6. WHY CHOOSE US */}
       <section className="why-us-section">
