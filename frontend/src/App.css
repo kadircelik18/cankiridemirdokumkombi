@@ -333,6 +333,24 @@ h1, h2, h3, h4, .logo {
   align-items: center;
 }
 
+.about-image {
+  position: relative;
+  z-index: 1;
+}
+
+.about-image::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.1;
+}
+
 .about-info h2 {
   font-size: 2.5rem;
   color: var(--primary);
