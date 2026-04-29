@@ -107,9 +107,9 @@ function App() {
       <section id="home" className="hero-section">
         <div className="container hero-grid">
           <div className="hero-content" data-aos="fade-right">
-            <div className="badge-small">7/24 Teknik Servis</div>
-            <h1>Çankırı'da DemirDöküm Uzman <br/><span>Teknik Servis</span></h1>
-            <p>Çankırı ve çevresinde profesyonel kombi bakım, onarım ve montaj hizmetleri. 30 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
+            <div className="badge-small">Çankırı Kombi Ustası</div>
+            <h1>Çankırı DemirDöküm & <br/><span>Vaillant Teknik Servis</span></h1>
+            <p>Çankırı genelinde profesyonel DemirDöküm servis ve Vaillant kombi bakım hizmetleri. 30 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
             <div className="hero-actions">
               <a href="tel:+905444527090" className="btn-orange">Servis Çağır</a>
               <a href="#services" className="btn-outline">Hizmetlerimiz</a>
@@ -149,7 +149,7 @@ function App() {
               </div>
             </div>
             <div className="about-image" data-aos="fade-left">
-               <img src="/usta.png" alt="1000+ Teşekkür Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
+               <img src="/usta.png" alt="Çankırı Kombi Ustası Teknik Servis Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
             </div>
           </div>
         </div>
@@ -291,7 +291,7 @@ function App() {
         <div className="container">
           <div className="guide-grid">
             <div className="guide-image" data-aos="fade-right">
-              <img src="/kombivana .png" alt="Petek Vana Bağlantı Rehberi" />
+              <img src="/kombivana .png" alt="Çankırı Kombi Tamiri Vana Bağlantı Rehberi" />
             </div>
             <div className="guide-content" data-aos="fade-left">
               <h2>Petek Vanası Nasıl Bağlanmalı?</h2>
