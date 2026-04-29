@@ -1,59 +1,123 @@
 import React, { useEffect, useState } from "react";
-import { Phone, MessageSquare, Mail, MapPin, Instagram, Facebook, ShieldCheck, Clock, Wrench, CircleCheck, ChevronRight, CircleHelp, Menu, X } from "lucide-react";
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useNavigate, useLocation } from "react-router-dom";
+import { Phone, MessageSquare, Mail, MapPin, Instagram, Facebook, ShieldCheck, Clock, Wrench, CircleCheck, ChevronRight, CircleHelp, Menu, X, ArrowLeft } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 
-function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const brands = [
+  { 
+    id: "vaillant",
+    name: "Vaillant", 
+    img: "/vaillant-logo-272x72-1888261.png", 
+    color: "#008f7a",
+    models: "EcoTEC Intro, EcoTEC Plus, VUW TR Serisi, TurboMAG",
+    info: "Alman teknolojisi ile üretilen Vaillant kombiler, yüksek enerji verimliliği ve uzun ömürlü kullanım sunar. Akıllı kontrol sistemleri ile yakıt tasarrufu sağlar."
+  },
+  { 
+    id: "demirdokum",
+    name: "Demirdöküm", 
+    img: "/dd-logo-2966321.png", 
+    color: "#004a99",
+    models: "Nitromix, Atromix, Vintomix, Nepto, Atron Condense",
+    info: "Türkiye'nin öncü ısıtma markası DemirDöküm, geniş servis ağı ve kolay yedek parça imkanı ile en çok tercih edilen modelleri sunar. Yoğuşmalı teknolojide liderdir."
+  },
+  { 
+    id: "protherm",
+    name: "Protherm", 
+    img: "/protherm_logo.png", 
+    color: "#ff0000",
+    models: "Lynx Condense, Jaguar Condense, Puma Condense",
+    info: "Ekonomik ve performans odaklı çözümler sunan Protherm, kullanıcı dostu arayüzü ve sağlam yapısıyla bilinir. Fiyat/performans dengesi en yüksek markalardan biridir."
+  },
+  { 
+    id: "ariston",
+    name: "Ariston", 
+    img: "/LogoAriston.svg", 
+    color: "#cd2027",
+    models: "Clas One, Alteas One, Genus One, Cares Premium, HS Premium",
+    info: "İtalyan tasarımı ve ileri teknoloji ile birleşen Ariston kombiler, sessiz çalışma ve şık görünüm sunar. XtraTech paslanmaz çelik eşanjör ile dayanıklıdır.",
+    isAuthorized: true,
+    certificateImg: "/teeşkkür bellges.png",
+    brandErrors: [
+      { code: "101", desc: "Aşırı Isınma" },
+      { code: "501", desc: "Alev Yok" },
+      { code: "103-107", desc: "Sirkülasyon Hatası" },
+      { code: "301", desc: "Ekran Kartı Hatası" }
+    ]
+  }
+];
 
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
+const Navbar = ({ toggleMenu, menuOpen, setMenuOpen }) => (
+  <nav className="navbar">
+    <div className="container nav-flex">
+      <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
+        <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="navbar-logo-img" />
+      </Link>
+      
+      <div className="hamburger" onClick={toggleMenu}>
+        {menuOpen ? <X size={30} /> : <Menu size={30} />}
+      </div>
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+      <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <li><Link to="/" className="nav-item" onClick={() => setMenuOpen(false)}>Anasayfa</Link></li>
+        <li><a href="/#services" className="nav-item" onClick={() => setMenuOpen(false)}>Hizmetler</a></li>
+        <li><a href="/#errors" className="nav-item" onClick={() => setMenuOpen(false)}>Hata Kodları</a></li>
+        <li><a href="/#valve-guide" className="nav-item" onClick={() => setMenuOpen(false)}>Vana Rehberi</a></li>
+        <li><a href="tel:+905444527090" className="nav-phone-link mobile-only"><Phone size={20} /> 0544 452 70 90</a></li>
+      </ul>
+      <a href="tel:+905444527090" className="nav-phone-link desktop-only"><Phone size={20} /> 0544 452 70 90</a>
+    </div>
+  </nav>
+);
 
-  const [selectedBrand, setSelectedBrand] = useState(null);
+const Footer = () => (
+  <footer className="footer">
+    <div className="container">
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <div className="logo">
+            <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="footer-logo-img" />
+          </div>
+          <p style={{marginTop: '20px'}}>Çankırı'nın tüm noktalarına 7/24 hizmet veren DemirDöküm uzman teknik servisi.</p>
+          <p style={{marginTop: '10px'}}><Mail size={16} style={{marginRight: '8px', verticalAlign: 'middle'}} /> cankiridemirdokumservis@gmail.com</p>
+          <p style={{marginTop: '5px'}}><Phone size={16} style={{marginRight: '8px', verticalAlign: 'middle'}} /> +90 544 452 70 90</p>
+        </div>
+        <div className="footer-links">
+          <h4>Hızlı Linkler</h4>
+          <ul>
+            <li><Link to="/">Anasayfa</Link></li>
+            <li><a href="/#services">Hizmetler</a></li>
+            <li><a href="/#errors">Hata Kodları</a></li>
+            <li><a href="/#valve-guide">Vana Rehberi</a></li>
+          </ul>
+        </div>
+        <div className="footer-links">
+          <h4>Teknik Destek</h4>
+          <ul>
+            <li><a href="/#errors">Arıza Kodları</a></li>
+            <li><a href="/#valve-guide">Vana Bağlantısı</a></li>
+            <li><a href="/#contact">Servis Talebi</a></li>
+            <li><a href="/#about">Sertifikalarımız</a></li>
+          </ul>
+        </div>
+        <div className="footer-links">
+          <h4>Sosyal Medya</h4>
+          <div style={{display: 'flex', gap: '20px'}}>
+            <a href="#"><Facebook /></a>
+            <a href="#"><Instagram /></a>
+            <a href="#"><MessageSquare /></a>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>© 2025 DemirDöküm Teknik Servis. Tüm Hakları Saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+);
 
-  const brands = [
-    { 
-      name: "Vaillant", 
-      img: "/vaillant-logo-272x72-1888261.png", 
-      color: "#008f7a",
-      models: "EcoTEC Intro, EcoTEC Plus, VUW TR Serisi, TurboMAG",
-      info: "Alman teknolojisi ile üretilen Vaillant kombiler, yüksek enerji verimliliği ve uzun ömürlü kullanım sunar. Akıllı kontrol sistemleri ile yakıt tasarrufu sağlar."
-    },
-    { 
-      name: "Demirdöküm", 
-      img: "/dd-logo-2966321.png", 
-      color: "#004a99",
-      models: "Nitromix, Atromix, Vintomix, Nepto, Atron Condense",
-      info: "Türkiye'nin öncü ısıtma markası DemirDöküm, geniş servis ağı ve kolay yedek parça imkanı ile en çok tercih edilen modelleri sunar. Yoğuşmalı teknolojide liderdir."
-    },
-    { 
-      name: "Protherm", 
-      img: "/protherm_logo.png", 
-      color: "#ff0000",
-      models: "Lynx Condense, Jaguar Condense, Puma Condense",
-      info: "Ekonomik ve performans odaklı çözümler sunan Protherm, kullanıcı dostu arayüzü ve sağlam yapısıyla bilinir. Fiyat/performans dengesi en yüksek markalardan biridir."
-    },
-    { 
-      name: "Ariston", 
-      img: "/LogoAriston.svg", 
-      color: "#cd2027",
-      models: "Clas One, Alteas One, Genus One, Cares Premium, HS Premium",
-      info: "İtalyan tasarımı ve ileri teknoloji ile birleşen Ariston kombiler, sessiz çalışma ve şık görünüm sunar. XtraTech paslanmaz çelik eşanjör ile dayanıklıdır.",
-      isAuthorized: true,
-      certificateImg: "/teeşkkür bellges.png",
-      brandErrors: [
-        { code: "101", desc: "Aşırı Isınma" },
-        { code: "501", desc: "Alev Yok" },
-        { code: "103-107", desc: "Sirkülasyon Hatası" },
-        { code: "301", desc: "Ekran Kartı Hatası" }
-      ]
-    }
-  ];
-
+const Home = () => {
   const whyUs = [
     { icon: <ShieldCheck size={40} />, title: "%100 Garanti", desc: "Yapılan tüm işlemler servis garantisi altındadır." },
     { icon: <Clock size={40} />, title: "Hızlı Servis", desc: "Aynı gün içinde arıza tespiti ve tamir imkanı." },
@@ -80,29 +144,7 @@ function App() {
   ];
 
   return (
-    <div className="landing-page">
-      {/* 1. NAVBAR */}
-      <nav className="navbar">
-        <div className="container nav-flex">
-          <div className="logo">
-            <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="navbar-logo-img" />
-          </div>
-          
-          <div className="hamburger" onClick={toggleMenu}>
-            {menuOpen ? <X size={30} /> : <Menu size={30} />}
-          </div>
-
-          <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
-            <li><a href="#home" className="nav-item" onClick={() => setMenuOpen(false)}>Anasayfa</a></li>
-            <li><a href="#services" className="nav-item" onClick={() => setMenuOpen(false)}>Hizmetler</a></li>
-            <li><a href="#errors" className="nav-item" onClick={() => setMenuOpen(false)}>Hata Kodları</a></li>
-            <li><a href="#valve-guide" className="nav-item" onClick={() => setMenuOpen(false)}>Vana Rehberi</a></li>
-            <li><a href="tel:+905444527090" className="nav-phone-link mobile-only"><Phone size={20} /> 0544 452 70 90</a></li>
-          </ul>
-          <a href="tel:+905444527090" className="nav-phone-link desktop-only"><Phone size={20} /> 0544 452 70 90</a>
-        </div>
-      </nav>
-
+    <>
       {/* 2. HERO SECTION */}
       <section id="home" className="hero-section">
         <div className="container hero-grid">
@@ -118,13 +160,7 @@ function App() {
         </div>
       </section>
 
-      {/* 3. DOBLO ANIMATION */}
-      {/* <section className="vehicle-section">
-        <div className="road-animation"></div>
-        <div className="doblo-track">
-          <img src="/doblo.png" alt="Servis Aracı" className="doblo-img" />
-        </div>
-      </section> */}
+      {/* 3. DOBLO ANIMATION (COMMENTED) */}
 
       {/* 4. ABOUT US SECTION */}
       <section id="about" className="about-section">
@@ -167,80 +203,16 @@ function App() {
                 </div>
                 <h3 style={{color: brand.color}}>{brand.name} Servisi</h3>
                 <p>Orijinal yedek parça ve profesyonel arıza tespiti ile {brand.name} garantili bakım hizmeti.</p>
-                <button 
-                  className="card-btn-solid" 
-                  style={{background: brand.color}}
-                  onClick={() => {
-                    setSelectedBrand(brand);
-                    document.getElementById('brand-detail')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
+                <Link to={`/brand/${brand.id}`} className="card-btn-solid" style={{background: brand.color, textDecoration: 'none'}}>
                   Detaylı Bilgi <ChevronRight size={16} />
-                </button>
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
-      
-      {/* BRAND DETAILS SECTION */}
-      {selectedBrand && (
-        <section id="brand-detail" className="brand-detail-section" data-aos="zoom-in">
-          <div className="container">
-            <div className="detail-card" style={{borderTop: `8px solid ${selectedBrand.color}`}}>
-              <div className="detail-grid">
-                <div className="detail-header">
-                  <img src={selectedBrand.img} alt={selectedBrand.name} className="detail-logo" />
-                  <h2>{selectedBrand.name} Uzmanlık Detayları</h2>
-                </div>
-                <div className="detail-body">
-                  <div className="detail-info">
-                    <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px'}}>
-                      <h3>Marka Hakkında</h3>
-                      {selectedBrand.isAuthorized && <span className="auth-badge">Yetkili Servis</span>}
-                    </div>
-                    <p>{selectedBrand.info}</p>
-                    
-                    {selectedBrand.brandErrors && (
-                      <div className="detail-errors" style={{marginTop: '30px'}}>
-                        <h3>Sık Karşılaşılan Hata Kodları</h3>
-                        <div className="mini-error-grid">
-                          {selectedBrand.brandErrors.map((err, idx) => (
-                            <div key={idx} className="mini-error-item">
-                              <span style={{color: selectedBrand.color, fontWeight: 'bold'}}>{err.code}:</span> {err.desc}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="detail-models">
-                    <h3>Tamir ve Satışı Yapılan Modeller</h3>
-                    <ul className="model-list">
-                      {selectedBrand.models.split(', ').map((model, idx) => (
-                        <li key={idx}><CircleCheck size={18} color={selectedBrand.color} /> {model}</li>
-                      ))}
-                    </ul>
-                    
-                    {selectedBrand.certificateImg && (
-                      <div className="detail-cert" style={{marginTop: '40px'}}>
-                        <h3>Yetki ve Başarı Belgemiz</h3>
-                        <img src={selectedBrand.certificateImg} alt="Yetki Belgesi" className="cert-img-small" />
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="detail-footer">
-                   <button className="close-detail" onClick={() => setSelectedBrand(null)}>Kapat</button>
-                   <a href="tel:+905444527090" className="btn-orange" style={{background: selectedBrand.color, border: 'none', color: 'white'}}>Hemen Servis Çağır</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
-      {/* NEW: ERROR CODES SECTION */}
+      {/* 6. ERROR CODES SECTION */}
       <section id="errors" className="errors-section">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Kombi Hata Kodları</h2>
@@ -260,7 +232,7 @@ function App() {
         </div>
       </section>
 
-      {/* NEW: VALVE GUIDE SECTION */}
+      {/* 7. VALVE GUIDE SECTION */}
       <section id="valve-guide" className="valve-guide-section">
         <div className="container">
           <div className="guide-grid">
@@ -282,32 +254,17 @@ function App() {
         </div>
       </section>
 
-      {/* NEW: CERTIFICATES SECTION */}
-      {/* <section id="certificates" className="certificates-section">
-        <div className="container">
-          <h2 className="section-title" data-aos="fade-up">Yetki ve Başarı Belgelerimiz</h2>
-          <div className="cert-intro">
-            <div className="cert-text">
-              <h3>1000'den Fazla Teşekkür ve Takdir Belgesi</h3>
-              <p>Sunduğumuz kaliteli hizmet ve müşteri memnuniyeti odaklı çalışmamızın karşılığını, müşterilerimizden aldığımız binlerce teşekkür belgesi ile taçlandırıyoruz. Hızlı servis ve kesin çözüm ilkemizden asla ödün vermiyoruz.</p>
-            </div>
-            <div className="cert-showcase" data-aos="zoom-in">
-              <img src="/teeşkkür bellges.png" alt="Uzman Usta" className="main-cert" />
-              <div className="cert-overlay">
-                <h4>HIZLI HİZMET</h4>
-                <p>Aynı Gün Müdahale</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* 6. WHY CHOOSE US */}
+      {/* 8. WHY CHOOSE US */}
       <section className="why-us-section">
         <div className="container">
           <h2 className="section-title" style={{color: 'white'}} data-aos="fade-up">Neden Bizi Seçmelisiniz?</h2>
           <div className="why-grid">
-            {whyUs.map((item, i) => (
+            {[
+              { icon: <ShieldCheck size={40} />, title: "%100 Garanti", desc: "Yapılan tüm işlemler servis garantisi altındadır." },
+              { icon: <Clock size={40} />, title: "Hızlı Servis", desc: "Aynı gün içinde arıza tespiti ve tamir imkanı." },
+              { icon: <Wrench size={40} />, title: "Orijinal Parça", desc: "Sadece üretici onaylı orijinal yedek parçalar kullanılır." },
+              { icon: <CircleCheck size={40} />, title: "Uzman Kadro", desc: "30 yıllık tecrübe ile profesyonel teknik destek." }
+            ].map((item, i) => (
               <div key={i} className="why-card" data-aos="zoom-in" data-aos-delay={i * 100}>
                 <div className="why-icon">{item.icon}</div>
                 <h3>{item.title}</h3>
@@ -318,7 +275,7 @@ function App() {
         </div>
       </section>
 
-      {/* 7. FAQ SECTION */}
+      {/* 9. FAQ SECTION */}
       <section className="faq-section container" style={{padding: '100px 0'}}>
         <h2 className="section-title" data-aos="fade-up">Sıkça Sorulan Sorular</h2>
         <div style={{maxWidth: '800px', margin: '0 auto'}}>
@@ -333,7 +290,7 @@ function App() {
         </div>
       </section>
 
-      {/* 8. CONTACT SECTION - FULL WIDTH MAP */}
+      {/* 10. CONTACT SECTION */}
       <section id="contact" className="contact-section" style={{padding: 0}}>
         <div className="full-width-map">
           <iframe 
@@ -342,52 +299,104 @@ function App() {
           </iframe>
         </div>
       </section>
+    </>
+  );
+};
 
-      {/* 9. FOOTER */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-brand">
-              <div className="logo">
-                <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="footer-logo-img" />
+const BrandDetail = () => {
+  const { brandId } = useParams();
+  const navigate = useNavigate();
+  const brand = brands.find(b => b.id === brandId);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (!brand) return <div className="container" style={{padding: '100px 0'}}>Marka bulunamadı. <Link to="/">Geri Dön</Link></div>;
+
+  return (
+    <section className="brand-detail-page" style={{padding: '140px 0 100px', minHeight: '100vh', background: '#f8fafc'}}>
+      <div className="container">
+        <button onClick={() => navigate(-1)} className="back-btn">
+          <ArrowLeft size={20} /> Geri Dön
+        </button>
+        
+        <div className="detail-card" style={{borderTop: `8px solid ${brand.color}`, marginTop: '30px'}}>
+          <div className="detail-grid">
+            <div className="detail-header">
+              <img src={brand.img} alt={brand.name} className="detail-logo" />
+              <h2>{brand.name} Uzmanlık Detayları</h2>
+              {brand.isAuthorized && <span className="auth-badge">Yetkili Servis</span>}
+            </div>
+            
+            <div className="detail-body">
+              <div className="detail-info">
+                <h3>Marka Hakkında</h3>
+                <p>{brand.info}</p>
+                
+                {brand.brandErrors && (
+                  <div className="detail-errors" style={{marginTop: '30px'}}>
+                    <h3>Sık Karşılaşılan Hata Kodları</h3>
+                    <div className="mini-error-grid">
+                      {brand.brandErrors.map((err, idx) => (
+                        <div key={idx} className="mini-error-item">
+                          <span style={{color: brand.color, fontWeight: 'bold'}}>{err.code}:</span> {err.desc}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-              <p style={{marginTop: '20px'}}>Çankırı'nın tüm noktalarına 7/24 hizmet veren DemirDöküm uzman teknik servisi.</p>
-              <p style={{marginTop: '10px'}}><Mail size={16} style={{marginRight: '8px', verticalAlign: 'middle'}} /> cankiridemirdokumservis@gmail.com</p>
-              <p style={{marginTop: '5px'}}><Phone size={16} style={{marginRight: '8px', verticalAlign: 'middle'}} /> +90 544 452 70 90</p>
-            </div>
-            <div className="footer-links">
-              <h4>Hızlı Linkler</h4>
-              <ul>
-                <li><a href="#home">Anasayfa</a></li>
-                <li><a href="#services">Hizmetler</a></li>
-                <li><a href="#errors">Hata Kodları</a></li>
-                <li><a href="#valve-guide">Vana Rehberi</a></li>
-              </ul>
-            </div>
-            <div className="footer-links">
-              <h4>Teknik Destek</h4>
-              <ul>
-                <li><a href="#errors">Arıza Kodları</a></li>
-                <li><a href="#valve-guide">Vana Bağlantısı</a></li>
-                <li><a href="#contact">Servis Talebi</a></li>
-                <li><a href="#about">Sertifikalarımız</a></li>
-              </ul>
-            </div>
-            <div className="footer-links">
-              <h4>Sosyal Medya</h4>
-              <div style={{display: 'flex', gap: '20px'}}>
-                <a href="#"><Facebook /></a>
-                <a href="#"><Instagram /></a>
-                <a href="#"><MessageSquare /></a>
+              
+              <div className="detail-models">
+                <h3>Tamir ve Satışı Yapılan Modeller</h3>
+                <ul className="model-list">
+                  {brand.models.split(', ').map((model, idx) => (
+                    <li key={idx}><CircleCheck size={18} color={brand.color} /> {model}</li>
+                  ))}
+                </ul>
+                
+                {brand.certificateImg && (
+                  <div className="detail-cert" style={{marginTop: '40px'}}>
+                    <h3>Yetki ve Başarı Belgemiz</h3>
+                    <img src={brand.certificateImg} alt="Yetki Belgesi" className="cert-img-small" />
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© 2025 DemirDöküm Teknik Servis. Tüm Hakları Saklıdır.</p>
+            
+            <div className="detail-footer">
+               <a href="tel:+905444527090" className="btn-orange" style={{background: brand.color, border: 'none', color: 'white', textDecoration: 'none'}}>Hemen Servis Çağır</a>
+            </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </section>
+  );
+};
+
+function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  return (
+    <Router>
+      <div className="landing-page">
+        <Navbar toggleMenu={toggleMenu} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/brand/:brandId" element={<BrandDetail />} />
+        </Routes>
+
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
