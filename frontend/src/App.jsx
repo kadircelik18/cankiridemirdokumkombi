@@ -340,12 +340,12 @@ const BrandDetail = () => {
           {/* MAIN CONTENT */}
           <main className="detail-main-content" data-aos="fade-up">
             <section className="detail-section">
-              <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Marka Bilgisi ve Uzmanlık</h2>
+              <h2 className="detail-section-title">Marka Bilgisi ve Uzmanlık</h2>
               <p className="detail-text">{brand.info}</p>
             </section>
 
             <section className="detail-section">
-              <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Hizmet Verilen Modeller</h2>
+              <h2 className="detail-section-title">Hizmet Verilen Modeller</h2>
               <div className="models-horizontal-list">
                 {brand.models.split(', ').map((model, idx) => (
                   <div key={idx} className="model-tag-premium">
@@ -357,7 +357,7 @@ const BrandDetail = () => {
 
             {brand.brandErrors && (
               <section className="detail-section">
-                <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Arıza ve Hata Kodları Rehberi</h2>
+                <h2 className="detail-section-title">Arıza ve Hata Kodları Rehberi</h2>
                 <div className="corporate-error-grid">
                   {brand.brandErrors.map((err, idx) => (
                     <div key={idx} className="corp-error-item">
@@ -371,7 +371,7 @@ const BrandDetail = () => {
 
             {brand.certificateImg && (
               <section className="detail-section">
-                <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Yetki ve Başarı Belgelerimiz</h2>
+                <h2 className="detail-section-title">Yetki ve Başarı Belgelerimiz</h2>
                 <div className="corp-cert-container">
                   <img src={brand.certificateImg} alt="Yetki Belgesi" className="corp-cert-img" />
                   <p className="cert-caption">Görsel: {brand.name} Yetkili Servis Sertifikası</p>
