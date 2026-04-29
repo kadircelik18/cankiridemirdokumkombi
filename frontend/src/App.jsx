@@ -6,14 +6,30 @@ import "./App.css";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
     AOS.init({ duration: 1000, once: true });
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const [selectedBrand, setSelectedBrand] = useState(null);
+  if (loading) {
+    return (
+      <div className="simple-loader">
+        <div className="spinner-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    );
+  }
 
   const brands = [
     { 
