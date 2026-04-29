@@ -315,13 +315,13 @@ const BrandDetail = () => {
   if (!brand) return <div className="container" style={{padding: '100px 0'}}>Marka bulunamadı. <Link to="/">Geri Dön</Link></div>;
 
   return (
-    <section className="brand-detail-page" style={{padding: '140px 0 100px', minHeight: '100vh', background: '#f8fafc'}}>
+    <section className="brand-detail-page" style={{padding: '100px 0 60px', minHeight: '100vh', background: '#f8fafc'}}>
       <div className="container">
         <button onClick={() => navigate(-1)} className="back-btn">
           <ArrowLeft size={20} /> Geri Dön
         </button>
         
-        <div className="detail-card" style={{borderTop: `8px solid ${brand.color}`, marginTop: '30px'}}>
+        <div className="detail-card" style={{borderTop: `8px solid ${brand.color}`, marginTop: '20px'}}>
           <div className="detail-grid">
             <div className="detail-header">
               <img src={brand.img} alt={brand.name} className="detail-logo" />
