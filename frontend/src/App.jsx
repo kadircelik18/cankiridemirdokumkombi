@@ -244,7 +244,7 @@ function App() {
                     <div className="cert-info">
                       <h3>Yetki ve Başarı Belgemiz</h3>
                       <p>Sizlere en kaliteli hizmeti sunmak için sürekli eğitim alan sertifikalı uzmanlarımızla hizmetinizdeyiz.</p>
-                      <a href="tel:+905444527090" className="btn-orange" style={{background: selectedBrand.color, border: 'none', color: 'white', marginTop: '40px', textDecoration: 'none'}}>Servis Talebi Oluştur</a>
+                      <a href="tel:+905444527090" className="btn-orange" style={{background: selectedBrand.color, border: 'none', color: 'white', marginTop: '60px', textDecoration: 'none', display: 'inline-block'}}>Servis Talebi Oluştur</a>
                     </div>
                     <div className="cert-image-box">
                       <img src={selectedBrand.certificateImg} alt="Yetki Belgesi" className="cert-img-final" />
