@@ -315,131 +315,72 @@ const BrandDetail = () => {
   if (!brand) return <div className="container" style={{padding: '100px 0'}}>Marka bulunamadı. <Link to="/">Geri Dön</Link></div>;
 
   return (
-    <div className="brand-detail-page" style={{position: 'relative', overflow: 'hidden'}}>
-      <div className="floating-blob blob-1"></div>
-      <div className="floating-blob blob-2"></div>
+    <div className="brand-detail-wrapper" style={{background: '#fcfcfc', minHeight: '100vh', paddingTop: '100px'}}>
+      <div className="container">
+        <button onClick={() => navigate(-1)} className="back-link">
+          <ArrowLeft size={18} /> Ana Sayfaya Dön
+        </button>
 
-      {/* BRAND HERO */}
-      <section className="brand-hero" style={{background: `linear-gradient(135deg, ${brand.color}f2, ${brand.color}bb), url('/ddarkaplan.png')`}}>
-        <div className="bg-pattern"></div>
-        <div className="container">
-          <button onClick={() => navigate(-1)} className="back-btn-light">
-            <ArrowLeft size={20} /> Ana Sayfaya Dön
-          </button>
-          <div className="brand-hero-content" data-aos="zoom-out">
-            <div className="brand-logo-white">
-              <img src={brand.img} alt={brand.name} />
-            </div>
-            <h1>{brand.name} <br/><span>Teknik Servis Merkezi</span></h1>
-            <p>Çankırı ve çevresinde en yüksek kalite standartlarında {brand.name} servis desteği.</p>
-            {brand.isAuthorized && <div className="auth-badge-large">Yetkili Servis Noktası</div>}
-          </div>
-        </div>
-      </section>
-
-      {/* BRAND CONTENT */}
-      <section className="brand-main-content">
-        <div className="container">
-          <div className="detail-layout-grid">
-            
-            {/* LEFT COLUMN: INFO & ERRORS */}
-            <div className="detail-left" data-aos="fade-right">
-              <div className="content-card glass-card">
-                <div className="card-header-icon">
-                  <ShieldCheck size={40} color={brand.color} />
-                  <h3>Profesyonel Yaklaşım</h3>
-                </div>
-                <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>{brand.info}</p>
-                <div className="service-features-mini">
-                  <div className="feat-item"><Clock size={20} color={brand.color} /> 7/24 Acil Müdahale</div>
-                  <div className="feat-item"><Wrench size={20} color={brand.color} /> Orijinal Parça Garantisi</div>
-                </div>
+        <div className="corporate-detail-grid">
+          {/* SIDEBAR: BRANDING & CTA */}
+          <aside className="detail-sidebar" data-aos="fade-right">
+            <div className="brand-focus-card">
+              <img src={brand.img} alt={brand.name} className="sidebar-brand-logo" />
+              {brand.isAuthorized && <div className="authorized-badge-premium">Yetkili Teknik Servis</div>}
+              <div className="sidebar-divider"></div>
+              <p className="sidebar-brand-desc">Çankırı ve çevresinde profesyonel {brand.name} teknik destek merkezi.</p>
+              <div className="sidebar-contact">
+                <a href="tel:+905444527090" className="sidebar-call-btn" style={{background: brand.color}}>
+                  <Phone size={20} /> Hemen Ara
+                </a>
               </div>
-
-              {brand.brandErrors && (
-                <div className="content-card error-card-detail glass-card" style={{marginTop: '30px'}}>
-                  <div className="card-header-icon">
-                    <CircleHelp size={40} color={brand.color} />
-                    <h3>Hata Kodları Rehberi</h3>
-                  </div>
-                  <div className="detailed-error-list">
-                    {brand.brandErrors.map((err, idx) => (
-                      <div key={idx} className="error-row" style={{borderLeft: `4px solid ${brand.color}`}}>
-                        <span className="error-tag" style={{background: brand.color}}>{err.code}</span>
-                        <span className="error-desc" style={{fontWeight: '700'}}>{err.desc}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
+          </aside>
 
-            {/* RIGHT COLUMN: MODELS & CERT */}
-            <div className="detail-right" data-aos="fade-left">
-              <div className="content-card glass-card">
-                <div className="card-header-icon">
-                  <Wrench size={40} color={brand.color} />
-                  <h3>Hizmet Verilen Modeller</h3>
-                </div>
-                <div className="model-grid-detail">
-                  {brand.models.split(', ').map((model, idx) => (
-                    <div key={idx} className="model-pill">
-                      <CircleCheck size={18} color={brand.color} /> {model}
+          {/* MAIN CONTENT */}
+          <main className="detail-main-content" data-aos="fade-up">
+            <section className="detail-section">
+              <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Marka Bilgisi ve Uzmanlık</h2>
+              <p className="detail-text">{brand.info}</p>
+            </section>
+
+            <section className="detail-section">
+              <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Hizmet Verilen Modeller</h2>
+              <div className="models-horizontal-list">
+                {brand.models.split(', ').map((model, idx) => (
+                  <div key={idx} className="model-tag-premium">
+                    <CircleCheck size={16} color={brand.color} /> {model}
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {brand.brandErrors && (
+              <section className="detail-section">
+                <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Arıza ve Hata Kodları Rehberi</h2>
+                <div className="corporate-error-grid">
+                  {brand.brandErrors.map((err, idx) => (
+                    <div key={idx} className="corp-error-item">
+                      <span className="corp-error-code" style={{color: brand.color}}>{err.code}</span>
+                      <span className="corp-error-desc">{err.desc}</span>
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
+            )}
 
-              {brand.certificateImg && (
-                <div className="cert-card-detail glass-card" style={{marginTop: '30px'}}>
-                  <h3>Yetki ve Kalite Belgemiz</h3>
-                  <div className="cert-wrapper">
-                    <img src={brand.certificateImg} alt="Yetki Belgesi" className="cert-img-premium" />
-                  </div>
+            {brand.certificateImg && (
+              <section className="detail-section">
+                <h2 className="detail-section-title" style={{borderLeft: `5px solid ${brand.color}`}}>Yetki ve Başarı Belgelerimiz</h2>
+                <div className="corp-cert-container">
+                  <img src={brand.certificateImg} alt="Yetki Belgesi" className="corp-cert-img" />
+                  <p className="cert-caption">Görsel: {brand.name} Yetkili Servis Sertifikası</p>
                 </div>
-              )}
-            </div>
-
-          </div>
-
-          {/* NEW: PROCESS SECTION */}
-          <div className="process-section" style={{marginTop: '100px'}} data-aos="fade-up">
-            <h2 className="section-title" style={{fontSize: '2.5rem'}}>Nasıl Çalışıyoruz?</h2>
-            <div className="process-grid">
-              <div className="process-step">
-                <span className="step-num">01</span>
-                <h4>Randevu</h4>
-                <p>Çağrı merkezimizi arayın, kaydınızı oluşturun.</p>
-              </div>
-              <div className="process-step">
-                <span className="step-num">02</span>
-                <h4>Arıza Tespiti</h4>
-                <p>Uzman ekibimiz adresinize gelerek sorunu belirler.</p>
-              </div>
-              <div className="process-step">
-                <span className="step-num">03</span>
-                <h4>Onarım</h4>
-                <p>Onayınızla birlikte orijinal parça değişimi yapılır.</p>
-              </div>
-              <div className="process-step">
-                <span className="step-num">04</span>
-                <h4>Teslimat</h4>
-                <p>Testler yapılır ve garantili olarak teslim edilir.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="brand-cta-bar" data-aos="zoom-in" style={{marginTop: '80px', border: `2px solid ${brand.color}22`}}>
-            <div className="cta-text">
-              <h4 style={{color: brand.color, fontSize: '1.8rem'}}>{brand.name} Çözüm Merkezi</h4>
-              <p>Kombiniz emin ellerde. Hemen profesyonel destek alın.</p>
-            </div>
-            <a href="tel:+905444527090" className="cta-button-large" style={{background: brand.color, boxShadow: `0 10px 30px ${brand.color}44`}}>
-              <Phone size={24} /> 0544 452 70 90
-            </a>
-          </div>
+              </section>
+            )}
+          </main>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
