@@ -187,54 +187,80 @@ function App() {
       {selectedBrand && (
         <section id="brand-detail" className="brand-detail-section" data-aos="zoom-in">
           <div className="container">
-            <div className="detail-card" style={{borderTop: `8px solid ${selectedBrand.color}`}}>
-              <div className="detail-grid">
-                <div className="detail-header">
-                  <img src={selectedBrand.img} alt={selectedBrand.name} className="detail-logo" />
-                  <h2>{selectedBrand.name} Uzmanlık Detayları</h2>
+            <div className="detail-card-premium" style={{borderTop: `10px solid ${selectedBrand.color}`}}>
+              <div className="detail-header-premium">
+                <div className="header-left">
+                  <img src={selectedBrand.img} alt={selectedBrand.name} className="detail-logo-large" />
+                  <div className="header-text">
+                    <h2>{selectedBrand.name} Kurumsal Teknik Servis</h2>
+                    {selectedBrand.isAuthorized && <span className="authorized-badge-pill">Yetkili Servis Noktası</span>}
+                  </div>
                 </div>
-                <div className="detail-body">
-                  <div className="detail-info">
-                    <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px'}}>
-                      <h3>Marka Hakkında</h3>
-                      {selectedBrand.isAuthorized && <span className="auth-badge">Yetkili Servis</span>}
-                    </div>
-                    <p>{selectedBrand.info}</p>
-                    
-                    {selectedBrand.brandErrors && (
-                      <div className="detail-errors" style={{marginTop: '30px'}}>
-                        <h3>Sık Karşılaşılan Hata Kodları</h3>
-                        <div className="mini-error-grid">
-                          {selectedBrand.brandErrors.map((err, idx) => (
-                            <div key={idx} className="mini-error-item">
-                              <span style={{color: selectedBrand.color, fontWeight: 'bold'}}>{err.code}:</span> {err.desc}
-                            </div>
-                          ))}
+                <button className="close-x" onClick={() => setSelectedBrand(null)}><X size={30} /></button>
+              </div>
+
+              <div className="detail-grid-three">
+                {/* COLUMN 1: BRAND INFO */}
+                <div className="detail-col">
+                  <div className="col-header"><ShieldCheck size={24} color={selectedBrand.color} /> <h3>Marka Uzmanlığı</h3></div>
+                  <p className="col-desc">{selectedBrand.info}</p>
+                  <div className="trust-badges-mini">
+                    <div className="trust-item"><Clock size={16} /> 7/24 Destek</div>
+                    <div className="trust-item"><Wrench size={16} /> Orijinal Parça</div>
+                  </div>
+                </div>
+
+                {/* COLUMN 2: MODELS */}
+                <div className="detail-col">
+                  <div className="col-header"><Wrench size={24} color={selectedBrand.color} /> <h3>Hizmet Verilen Modeller</h3></div>
+                  <div className="models-tag-cloud">
+                    {selectedBrand.models.split(', ').map((model, idx) => (
+                      <span key={idx} className="model-tag-small"><CircleCheck size={14} color={selectedBrand.color} /> {model}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* COLUMN 3: ERRORS */}
+                <div className="detail-col">
+                  <div className="col-header"><CircleHelp size={24} color={selectedBrand.color} /> <h3>Arıza Kodları</h3></div>
+                  {selectedBrand.brandErrors ? (
+                    <div className="error-list-compact">
+                      {selectedBrand.brandErrors.map((err, idx) => (
+                        <div key={idx} className="error-item-mini">
+                          <span className="error-code-label" style={{color: selectedBrand.color}}>{err.code}:</span> {err.desc}
                         </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="detail-models">
-                    <h3>Tamir ve Satışı Yapılan Modeller</h3>
-                    <ul className="model-list">
-                      {selectedBrand.models.split(', ').map((model, idx) => (
-                        <li key={idx}><CircleCheck size={18} color={selectedBrand.color} /> {model}</li>
                       ))}
-                    </ul>
-                    
-                    {selectedBrand.certificateImg && (
-                      <div className="detail-cert" style={{marginTop: '40px'}}>
-                        <h3>Yetki ve Başarı Belgemiz</h3>
-                        <img src={selectedBrand.certificateImg} alt="Yetki Belgesi" className="cert-img-small" />
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="detail-footer">
-                   <button className="close-detail" onClick={() => setSelectedBrand(null)}>Kapat</button>
-                   <a href="tel:+905444527090" className="btn-orange" style={{background: selectedBrand.color, border: 'none', color: 'white'}}>Hemen Servis Çağır</a>
+                    </div>
+                  ) : (
+                    <p className="col-desc">Tüm {selectedBrand.name} hata kodları için teknik destek alabilirsiniz.</p>
+                  )}
                 </div>
               </div>
+
+              {selectedBrand.certificateImg && (
+                <div className="detail-cert-full">
+                  <div className="detail-divider"></div>
+                  <div className="cert-centered-layout">
+                    <div className="cert-info">
+                      <h3>Yetki ve Başarı Belgemiz</h3>
+                      <p>Sizlere en kaliteli hizmeti sunmak için sürekli eğitim alan sertifikalı uzmanlarımızla hizmetinizdeyiz.</p>
+                      <a href="tel:+905444527090" className="btn-orange" style={{background: selectedBrand.color, border: 'none', color: 'white', marginTop: '20px', textDecoration: 'none'}}>Servis Talebi Oluştur</a>
+                    </div>
+                    <div className="cert-image-box">
+                      <img src={selectedBrand.certificateImg} alt="Yetki Belgesi" className="cert-img-final" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {!selectedBrand.certificateImg && (
+                <div className="detail-footer-cta">
+                  <div className="detail-divider"></div>
+                  <a href="tel:+905444527090" className="btn-orange-large" style={{background: selectedBrand.color, textDecoration: 'none'}}>
+                    <Phone size={24} /> {selectedBrand.name} Servis Hattı: 0544 452 70 90
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </section>
