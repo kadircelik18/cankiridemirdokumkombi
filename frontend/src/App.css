@@ -980,3 +980,40 @@ h1, h2, h3, h4, .logo {
 
 
 
+
+.auth-badge {
+  background: #22c55e;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mini-error-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  background: #f1f5f9;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.mini-error-item {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.cert-img-small {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.cert-img-small:hover {
+  transform: scale(1.05);
+}

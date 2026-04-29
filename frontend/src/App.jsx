@@ -41,8 +41,16 @@ function App() {
       name: "Ariston", 
       img: "/LogoAriston.svg", 
       color: "#cd2027",
-      models: "Clas One, Alteas One, Genus One, Cares Premium",
-      info: "İtalyan tasarımı ve ileri teknoloji ile birleşen Ariston kombiler, sessiz çalışma ve şık görünüm sunar. XtraTech paslanmaz çelik eşanjör ile dayanıklıdır."
+      models: "Clas One, Alteas One, Genus One, Cares Premium, HS Premium",
+      info: "İtalyan tasarımı ve ileri teknoloji ile birleşen Ariston kombiler, sessiz çalışma ve şık görünüm sunar. XtraTech paslanmaz çelik eşanjör ile dayanıklıdır.",
+      isAuthorized: true,
+      certificateImg: "/teeşkkür bellges.png",
+      brandErrors: [
+        { code: "101", desc: "Aşırı Isınma" },
+        { code: "501", desc: "Alev Yok" },
+        { code: "103-107", desc: "Sirkülasyon Hatası" },
+        { code: "301", desc: "Ekran Kartı Hatası" }
+      ]
     }
   ];
 
@@ -187,8 +195,24 @@ function App() {
                 </div>
                 <div className="detail-body">
                   <div className="detail-info">
-                    <h3>Marka Hakkında</h3>
+                    <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px'}}>
+                      <h3>Marka Hakkında</h3>
+                      {selectedBrand.isAuthorized && <span className="auth-badge">Yetkili Servis</span>}
+                    </div>
                     <p>{selectedBrand.info}</p>
+                    
+                    {selectedBrand.brandErrors && (
+                      <div className="detail-errors" style={{marginTop: '30px'}}>
+                        <h3>Sık Karşılaşılan Hata Kodları</h3>
+                        <div className="mini-error-grid">
+                          {selectedBrand.brandErrors.map((err, idx) => (
+                            <div key={idx} className="mini-error-item">
+                              <span style={{color: selectedBrand.color, fontWeight: 'bold'}}>{err.code}:</span> {err.desc}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div className="detail-models">
                     <h3>Tamir ve Satışı Yapılan Modeller</h3>
@@ -197,6 +221,13 @@ function App() {
                         <li key={idx}><CircleCheck size={18} color={selectedBrand.color} /> {model}</li>
                       ))}
                     </ul>
+                    
+                    {selectedBrand.certificateImg && (
+                      <div className="detail-cert" style={{marginTop: '40px'}}>
+                        <h3>Yetki ve Başarı Belgemiz</h3>
+                        <img src={selectedBrand.certificateImg} alt="Yetki Belgesi" className="cert-img-small" />
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="detail-footer">
