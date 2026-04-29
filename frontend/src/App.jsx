@@ -315,63 +315,103 @@ const BrandDetail = () => {
   if (!brand) return <div className="container" style={{padding: '100px 0'}}>Marka bulunamadı. <Link to="/">Geri Dön</Link></div>;
 
   return (
-    <section className="brand-detail-page" style={{padding: '100px 0 60px', minHeight: '100vh', background: '#f8fafc'}}>
-      <div className="container">
-        <button onClick={() => navigate(-1)} className="back-btn">
-          <ArrowLeft size={20} /> Geri Dön
-        </button>
-        
-        <div className="detail-card" style={{borderTop: `8px solid ${brand.color}`, marginTop: '20px'}}>
-          <div className="detail-grid">
-            <div className="detail-header">
-              <img src={brand.img} alt={brand.name} className="detail-logo" />
-              <h2>{brand.name} Uzmanlık Detayları</h2>
-              {brand.isAuthorized && <span className="auth-badge">Yetkili Servis</span>}
+    <div className="brand-detail-page">
+      {/* BRAND HERO */}
+      <section className="brand-hero" style={{background: `linear-gradient(135deg, ${brand.color}ee, ${brand.color}88), url('/ddarkaplan.png')`}}>
+        <div className="container">
+          <button onClick={() => navigate(-1)} className="back-btn-light">
+            <ArrowLeft size={20} /> Ana Sayfaya Dön
+          </button>
+          <div className="brand-hero-content" data-aos="fade-up">
+            <div className="brand-logo-white">
+              <img src={brand.img} alt={brand.name} />
             </div>
-            
-            <div className="detail-body">
-              <div className="detail-info">
-                <h3>Marka Hakkında</h3>
-                <p>{brand.info}</p>
-                
-                {brand.brandErrors && (
-                  <div className="detail-errors" style={{marginTop: '30px'}}>
-                    <h3>Sık Karşılaşılan Hata Kodları</h3>
-                    <div className="mini-error-grid">
-                      {brand.brandErrors.map((err, idx) => (
-                        <div key={idx} className="mini-error-item">
-                          <span style={{color: brand.color, fontWeight: 'bold'}}>{err.code}:</span> {err.desc}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              <div className="detail-models">
-                <h3>Tamir ve Satışı Yapılan Modeller</h3>
-                <ul className="model-list">
-                  {brand.models.split(', ').map((model, idx) => (
-                    <li key={idx}><CircleCheck size={18} color={brand.color} /> {model}</li>
-                  ))}
-                </ul>
-                
-                {brand.certificateImg && (
-                  <div className="detail-cert" style={{marginTop: '40px'}}>
-                    <h3>Yetki ve Başarı Belgemiz</h3>
-                    <img src={brand.certificateImg} alt="Yetki Belgesi" className="cert-img-small" />
-                  </div>
-                )}
-              </div>
-            </div>
-            
-            <div className="detail-footer">
-               <a href="tel:+905444527090" className="btn-orange" style={{background: brand.color, border: 'none', color: 'white', textDecoration: 'none'}}>Hemen Servis Çağır</a>
-            </div>
+            <h1>{brand.name} Teknik Servis Merkezi</h1>
+            <p>Çankırı genelinde profesyonel {brand.name} kombi bakım, onarım ve montaj hizmetleri.</p>
+            {brand.isAuthorized && <div className="auth-badge-large">Yetkili Servis Noktası</div>}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* BRAND CONTENT */}
+      <section className="brand-main-content">
+        <div className="container">
+          <div className="detail-layout-grid">
+            
+            {/* LEFT COLUMN: INFO & ERRORS */}
+            <div className="detail-left" data-aos="fade-right">
+              <div className="content-card">
+                <div className="card-header-icon">
+                  <ShieldCheck size={30} color={brand.color} />
+                  <h3>Marka Uzmanlığı</h3>
+                </div>
+                <p>{brand.info}</p>
+                <div className="service-features-mini">
+                  <div className="feat-item"><Clock size={16} /> 7/24 Acil Destek</div>
+                  <div className="feat-item"><Wrench size={16} /> Orijinal Yedek Parça</div>
+                  <div className="feat-item"><CircleCheck size={16} /> 30 Yıl Tecrübe</div>
+                </div>
+              </div>
+
+              {brand.brandErrors && (
+                <div className="content-card error-card-detail" style={{marginTop: '30px'}}>
+                  <div className="card-header-icon">
+                    <CircleHelp size={30} color={brand.color} />
+                    <h3>Sık Karşılaşılan Hata Kodları</h3>
+                  </div>
+                  <div className="detailed-error-list">
+                    {brand.brandErrors.map((err, idx) => (
+                      <div key={idx} className="error-row">
+                        <span className="error-tag" style={{background: brand.color}}>{err.code}</span>
+                        <span className="error-desc">{err.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* RIGHT COLUMN: MODELS & CERT */}
+            <div className="detail-right" data-aos="fade-left">
+              <div className="content-card">
+                <div className="card-header-icon">
+                  <Wrench size={30} color={brand.color} />
+                  <h3>Hizmet Verilen Modeller</h3>
+                </div>
+                <div className="model-grid-detail">
+                  {brand.models.split(', ').map((model, idx) => (
+                    <div key={idx} className="model-pill">
+                      <CircleCheck size={14} color={brand.color} /> {model}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {brand.certificateImg && (
+                <div className="cert-card-detail" style={{marginTop: '30px'}}>
+                  <h3>Yetki ve Başarı Belgemiz</h3>
+                  <div className="cert-wrapper">
+                    <img src={brand.certificateImg} alt="Yetki Belgesi" className="cert-img-premium" />
+                    <div className="cert-decoration"></div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+          </div>
+
+          <div className="brand-cta-bar" data-aos="zoom-in">
+            <div className="cta-text">
+              <h4>{brand.name} Kombinizde Sorun Mu Var?</h4>
+              <p>Hemen uzman teknisyenlerimizden randevu alın, mağduriyetinizi giderelim.</p>
+            </div>
+            <a href="tel:+905444527090" className="cta-button-large" style={{background: brand.color}}>
+              <Phone size={24} /> Hemen Servis Çağır
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
