@@ -1,4 +1,4 @@
-/* modern-reset.css or similar could be here, but we'll stick to a clean base */
+﻿/* modern-reset.css or similar could be here, but we'll stick to a clean base */
 * {
   margin: 0;
   padding: 0;
@@ -238,6 +238,7 @@ h1, h2, h3, h4, .logo {
   display: flex;
   gap: 16px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn-orange {
@@ -251,6 +252,7 @@ h1, h2, h3, h4, .logo {
   cursor: pointer;
   transition: var(--transition);
   box-shadow: 0 10px 20px rgba(255, 180, 0, 0.2);
+  text-decoration: none;
 }
 
 .btn-orange:hover {
@@ -268,6 +270,7 @@ h1, h2, h3, h4, .logo {
   font-size: 16px;
   cursor: pointer;
   transition: var(--transition);
+  text-decoration: none;
 }
 
 .btn-outline:hover {
@@ -433,6 +436,8 @@ h1, h2, h3, h4, .logo {
   transition: var(--transition);
   border: 1px solid #eee;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card:hover {
@@ -468,7 +473,7 @@ h1, h2, h3, h4, .logo {
   gap: 8px;
   cursor: pointer;
   transition: var(--transition);
-  margin-top: 20px;
+  margin-top: auto;
 }
 
 .card-btn-solid:hover {
@@ -984,6 +989,167 @@ h1, h2, h3, h4, .logo {
   }
 }
 
+/* ===== iOS Safari parallax fix ===== */
+@supports (-webkit-touch-callout: none) {
+  .hero-section {
+    background-attachment: scroll;
+  }
+}
+
+/* ===== TABLET (768px) ===== */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-form-box h2 {
+    font-size: 1.8rem;
+  }
+
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section {
+    padding: 140px 0 80px;
+    background-attachment: scroll;
+  }
+
+  .about-info h2 {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .btn-orange,
+  .btn-outline {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-card-premium {
+    padding: 24px 16px;
+  }
+
+  .full-width-map iframe {
+    height: 300px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+/* ===== MOBILE (480px) ===== */
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-section {
+    padding: 120px 0 60px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.65rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-info p {
+    font-size: 1rem;
+  }
+
+  .guide-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .stat-item h4 {
+    font-size: 2rem;
+  }
+
+  .navbar {
+    height: 64px;
+  }
+
+  .navbar-logo-img {
+    height: 36px;
+  }
+
+  .errors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-card-premium {
+    padding: 20px 12px;
+    border-radius: 16px;
+  }
+
+  .btn-orange-large {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+  .faq-section {
+    padding: 60px 16px !important;
+  }
+
+  .btn-orange,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+}
+
 
 
 
@@ -1042,7 +1208,7 @@ h1, h2, h3, h4, .logo {
   gap: 8px;
   cursor: pointer;
   transition: var(--transition);
-  margin-top: 20px;
+  margin-top: auto;
 }
 
 .brand-detail-section {
