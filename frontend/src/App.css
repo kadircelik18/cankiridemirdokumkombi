@@ -1,4 +1,4 @@
-﻿/* modern-reset.css or similar could be here, but we'll stick to a clean base */
+/* modern-reset.css or similar could be here, but we'll stick to a clean base */
 * {
   margin: 0;
   padding: 0;
@@ -943,6 +943,7 @@ h1, h2, h3, h4, .logo {
   .hero-section {
     padding: 120px 0 80px;
     text-align: center;
+    background-attachment: scroll;
   }
 
   .hero-content {
@@ -951,7 +952,7 @@ h1, h2, h3, h4, .logo {
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .hero-actions {
@@ -963,11 +964,28 @@ h1, h2, h3, h4, .logo {
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .about-image {
     display: none;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-info h2 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
   }
 
   .faq-section {
@@ -986,6 +1004,16 @@ h1, h2, h3, h4, .logo {
   .guide-list li {
     justify-content: center;
     text-align: left;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
@@ -1012,25 +1040,30 @@ h1, h2, h3, h4, .logo {
   }
 
   .contact-form-box h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
-
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1.05rem;
   }
 
   .hero-section {
-    padding: 140px 0 80px;
+    padding: 120px 0 70px;
     background-attachment: scroll;
   }
 
   .about-info h2 {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 35px;
   }
 
   .btn-orange,
@@ -1056,6 +1089,15 @@ h1, h2, h3, h4, .logo {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
   }
+
+  .services-section,
+  .why-us-section,
+  .errors-section,
+  .contact-section,
+  .certificates-section,
+  .valve-guide-section {
+    padding: 70px 0;
+  }
 }
 
 /* ===== MOBILE (480px) ===== */
@@ -1069,18 +1111,24 @@ h1, h2, h3, h4, .logo {
   }
 
   .hero-section {
-    padding: 120px 0 60px;
+    padding: 110px 0 55px;
+    min-height: unset;
   }
 
   .hero-content h1 {
-    font-size: 1.65rem;
-    line-height: 1.2;
+    font-size: 1.55rem;
+    line-height: 1.25;
   }
 
   .hero-content p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
   }
 
+  .badge-small {
+    font-size: 11px;
+    padding: 5px 14px;
+  }
 
   .stats-grid {
     grid-template-columns: 1fr 1fr;
@@ -1092,8 +1140,8 @@ h1, h2, h3, h4, .logo {
   }
 
   .section-title {
-    font-size: 1.6rem;
-    margin-bottom: 40px;
+    font-size: 1.45rem;
+    margin-bottom: 30px;
   }
 
   .why-grid {
@@ -1101,27 +1149,36 @@ h1, h2, h3, h4, .logo {
   }
 
   .about-info h2 {
-    font-size: 1.8rem;
-  }
-
-  .about-info p {
-    font-size: 1rem;
-  }
-
-  .guide-content h2 {
     font-size: 1.6rem;
   }
 
+  .about-info p {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+
+  .about-section {
+    padding: 55px 0;
+  }
+
+  .guide-content h2 {
+    font-size: 1.5rem;
+  }
+
   .stat-item h4 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .stat-item p {
+    font-size: 0.9rem;
   }
 
   .navbar {
-    height: 64px;
+    height: 60px;
   }
 
   .navbar-logo-img {
-    height: 36px;
+    height: 34px;
   }
 
   .errors-grid {
@@ -1129,7 +1186,7 @@ h1, h2, h3, h4, .logo {
   }
 
   .detail-card-premium {
-    padding: 20px 12px;
+    padding: 20px 14px;
     border-radius: 16px;
   }
 
@@ -1139,7 +1196,7 @@ h1, h2, h3, h4, .logo {
   }
 
   .faq-section {
-    padding: 60px 16px !important;
+    padding: 55px 16px !important;
   }
 
   .btn-orange,
@@ -1147,6 +1204,60 @@ h1, h2, h3, h4, .logo {
     width: 100%;
     text-align: center;
     display: block;
+    padding: 14px 20px;
+  }
+
+  .service-card {
+    padding: 28px 20px;
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .why-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .why-card p {
+    font-size: 0.9rem;
+  }
+
+  .services-section,
+  .why-us-section,
+  .errors-section,
+  .contact-section,
+  .certificates-section,
+  .valve-guide-section {
+    padding: 55px 0;
+  }
+
+  .contact-form-box h2 {
+    font-size: 1.4rem;
+  }
+
+  .guide-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .guide-list li {
+    font-size: 0.95rem;
+  }
+
+  .vehicle-section {
+    margin-top: 60px;
+  }
+
+  .footer {
+    padding: 55px 0 24px;
+  }
+
+  .detail-card {
+    padding: 20px 14px;
+  }
+
+  .mini-error-grid {
+    grid-template-columns: 1fr;
   }
 }
 
