@@ -126,7 +126,7 @@ function App() {
         <div className="container hero-grid">
           <div className="hero-content" data-aos="fade-right">
             <div className="badge-small">Çankırı DemirDöküm Servis | Kombi Teknik Servis</div>
-            <h1>Çankırı <span>DemirDöküm Servisi</span><br />& Kombi Teknik Servis</h1>
+            <h1>Çankırı <span>DemirDöküm Servisi</span> &<br /> Kombi Teknik Servis</h1>
             <p>Çankırı'nın en güvenilir <strong>DemirDöküm teknik servis</strong> ve <strong>kombi servis</strong> noktası. Vaillant, Ariston ve tüm marka kombiler için profesyonel bakım ve onarım. 30 yıllık tecrübe, aynı gün hizmet.</p>
             <div className="hero-actions">
               <a href="tel:+905444527090" className="btn-orange">Servis Çağır</a>
