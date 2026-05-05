@@ -90,9 +90,11 @@ function App() {
   ];
 
   const faqs = [
+    { q: "Çankırı'da kombi servisi nereye çağırılır?", a: "Çankırı'da kombi servisi için 0544 452 70 90 numaralı hattımızı arayabilirsiniz. Aynı gün içinde adresinize ulaşıyoruz." },
+    { q: "Çankırı DemirDöküm servisi var mı?", a: "Evet, Çankırı'nın en köklü DemirDöküm kombi servis noktasıyız. 1995'ten bu yana Çankırı genelinde DemirDöküm bakım ve onarım hizmeti veriyoruz." },
     { q: "Kombi bakımı ne sıklıkla yapılmalı?", a: "Verimlilik ve güvenlik için kombi bakımı yılda en az bir kez, tercihen kış sezonu öncesinde yapılmalıdır." },
     { q: "Arıza durumunda servis ne kadar sürede gelir?", a: "Hızlı servis prensibimizle, talebinizi oluşturduğunuz gün içerisinde adresinize ulaşıyoruz." },
-    { q: "DemirDöküm yetkili servis belgeniz var mı?", a: "Evet, tüm teknisyenlerimiz gerekli eğitimleri almış ve sertifikalı uzmanlardır." }
+    { q: "Çankırı'da kombi ustası bulabilir miyim?", a: "Evet! 30 yıllık tecrübemizle Çankırı'nın en deneyimli kombi ustası olarak hizmetinizdeyiz. Tüm marka kombiler için bakım ve onarım yapıyoruz." }
   ];
 
   return (
@@ -123,9 +125,9 @@ function App() {
       <section id="home" className="hero-section">
         <div className="container hero-grid">
           <div className="hero-content" data-aos="fade-right">
-            <div className="badge-small">Çankırı Kombi Ustası</div>
-            <h1>Çankırı DemirDöküm & <br/><span>Vaillant Teknik Servis</span></h1>
-            <p>Çankırı genelinde profesyonel DemirDöküm servis ve Vaillant kombi bakım hizmetleri. 30 yıllık tecrübe ve garantili işçilik ile evinizin sıcaklığını güvenceye alıyoruz.</p>
+            <div className="badge-small">Çankırı Kombi Ustası | DemirDöküm Servis</div>
+            <h1>Çankırı <span>Kombi Servisi</span> &amp; DemirDöküm Teknik Servis</h1>
+            <p>Çankırı'nın en güvenilir <strong>kombi ustası</strong> ve <strong>DemirDöküm servis</strong> noktası. Vaillant, Ariston ve tüm marka kombiler için profesyonel bakım ve onarım. 30 yıllık tecrübe, aynı gün hizmet.</p>
             <div className="hero-actions">
               <a href="tel:+905444527090" className="btn-orange">Servis Çağır</a>
               <a href="#services" className="btn-outline">Hizmetlerimiz</a>
@@ -425,7 +427,11 @@ function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2025 DemirDöküm Teknik Servis. Tüm Hakları Saklıdır.</p>
+            <p>© 2025 Çankırı Kombi Ustası - DemirDöküm Teknik Servis. Tüm Hakları Saklıdır.</p>
+            {/* SEO Keywords - Hidden visually but indexed */}
+            <p style={{fontSize: '10px', color: 'transparent', userSelect: 'none', lineHeight: '0', overflow: 'hidden', height: 0}} aria-hidden="true">
+              kombi servis çankırı, çankırı kombi ustası, demirdöküm servis çankırı, çankırı kombi servis, çankırı demirdöküm servis, kombi tamiri çankırı, kombi bakımı çankırı, çankırı ısıtma servisi, vaillant servis çankırı, ariston servis çankırı
+            </p>
           </div>
         </div>
       </footer>
