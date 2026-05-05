@@ -33,18 +33,18 @@ function App() {
 
   const brands = [
     { 
-      name: "Vaillant", 
-      img: "/vaillant-logo-272x72-1888261.png", 
-      color: "#008f7a",
-      models: "EcoTEC Intro, EcoTEC Plus, VUW TR Serisi, TurboMAG",
-      info: "Alman teknolojisi ile üretilen Vaillant kombiler, yüksek enerji verimliliği ve uzun ömürlü kullanım sunar. Akıllı kontrol sistemleri ile yakıt tasarrufu sağlar."
-    },
-    { 
       name: "Demirdöküm", 
       img: "/dd-logo-2966321.png", 
       color: "#004a99",
       models: "Nitromix, Atromix, Vintomix, Nepto, Atron Condense",
       info: "Türkiye'nin öncü ısıtma markası DemirDöküm, geniş servis ağı ve kolay yedek parça imkanı ile en çok tercih edilen modelleri sunar. Yoğuşmalı teknolojide liderdir."
+    },
+    { 
+      name: "Vaillant", 
+      img: "/vaillant-logo-272x72-1888261.png", 
+      color: "#008f7a",
+      models: "EcoTEC Intro, EcoTEC Plus, VUW TR Serisi, TurboMAG",
+      info: "Alman teknolojisi ile üretilen Vaillant kombiler, yüksek enerji verimliliği ve uzun ömürlü kullanım sunar. Akıllı kontrol sistemleri ile yakıt tasarrufu sağlar."
     },
     { 
       name: "Protherm", 
@@ -94,7 +94,7 @@ function App() {
     { q: "Çankırı DemirDöküm servisi var mı?", a: "Evet, Çankırı'nın en köklü DemirDöküm kombi servis noktasıyız. 1995'ten bu yana Çankırı genelinde DemirDöküm bakım ve onarım hizmeti veriyoruz." },
     { q: "Kombi bakımı ne sıklıkla yapılmalı?", a: "Verimlilik ve güvenlik için kombi bakımı yılda en az bir kez, tercihen kış sezonu öncesinde yapılmalıdır." },
     { q: "Arıza durumunda servis ne kadar sürede gelir?", a: "Hızlı servis prensibimizle, talebinizi oluşturduğunuz gün içerisinde adresinize ulaşıyoruz." },
-    { q: "Çankırı'da kombi ustası bulabilir miyim?", a: "Evet! 30 yıllık tecrübemizle Çankırı'nın en deneyimli kombi ustası olarak hizmetinizdeyiz. Tüm marka kombiler için bakım ve onarım yapıyoruz." }
+    { q: "Çankırı'da kombi servisi bulabilir miyim?", a: "Evet! 30 yıllık tecrübemizle Çankırı'nın en deneyimli kombi ve DemirDöküm teknik servisi olarak hizmetinizdeyiz. Tüm marka kombiler için bakım ve onarım yapıyoruz." }
   ];
 
   return (
@@ -125,9 +125,9 @@ function App() {
       <section id="home" className="hero-section">
         <div className="container hero-grid">
           <div className="hero-content" data-aos="fade-right">
-            <div className="badge-small">Çankırı Kombi Ustası | DemirDöküm Servis</div>
-            <h1>Çankırı <span>Kombi Servisi</span> &amp; DemirDöküm Teknik Servis</h1>
-            <p>Çankırı'nın en güvenilir <strong>kombi ustası</strong> ve <strong>DemirDöküm servis</strong> noktası. Vaillant, Ariston ve tüm marka kombiler için profesyonel bakım ve onarım. 30 yıllık tecrübe, aynı gün hizmet.</p>
+            <div className="badge-small">Çankırı DemirDöküm Servis | Kombi Teknik Servis</div>
+            <h1>Çankırı <span>DemirDöküm Servisi</span> & Kombi Teknik Servis</h1>
+            <p>Çankırı'nın en güvenilir <strong>DemirDöküm teknik servis</strong> ve <strong>kombi servis</strong> noktası. Vaillant, Ariston ve tüm marka kombiler için profesyonel bakım ve onarım. 30 yıllık tecrübe, aynı gün hizmet.</p>
             <div className="hero-actions">
               <a href="tel:+905444527090" className="btn-orange">Servis Çağır</a>
               <a href="#services" className="btn-outline">Hizmetlerimiz</a>
@@ -167,7 +167,7 @@ function App() {
               </div>
             </div>
             <div className="about-image" data-aos="fade-left">
-               <img src="/usta.png" alt="Çankırı Kombi Ustası Teknik Servis Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
+               <img src="/usta.png" alt="Çankırı Ariston Teknik Servis Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
             </div>
           </div>
         </div>
@@ -427,7 +427,7 @@ function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2025 Çankırı Kombi Ustası - DemirDöküm Teknik Servis. Tüm Hakları Saklıdır.</p>
+            <p>© 2025 Çankırı DemirDöküm Teknik Servis - Kombi Servis. Tüm Hakları Saklıdır.</p>
             {/* SEO Keywords - Hidden visually but indexed */}
             <p style={{fontSize: '10px', color: 'transparent', userSelect: 'none', lineHeight: '0', overflow: 'hidden', height: 0}} aria-hidden="true">
               kombi servis çankırı, çankırı kombi ustası, demirdöküm servis çankırı, çankırı kombi servis, çankırı demirdöküm servis, kombi tamiri çankırı, kombi bakımı çankırı, çankırı ısıtma servisi, vaillant servis çankırı, ariston servis çankırı
