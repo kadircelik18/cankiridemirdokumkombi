@@ -103,7 +103,7 @@ function App() {
       <nav className="navbar">
         <div className="container nav-flex">
           <div className="logo">
-            <img src="/dd-logo-2966321.png" alt="DemirDöküm Logo" className="navbar-logo-img" />
+            <img src="/dd-logo-2966321.png" alt="Çankırı DemirDöküm Servisi cankiri demirdokum servis" className="navbar-logo-img" />
           </div>
           
           <div className="hamburger" onClick={toggleMenu}>
@@ -430,7 +430,7 @@ function App() {
             <p>© 2025 Çankırı DemirDöküm Teknik Servis - Kombi Servis. Tüm Hakları Saklıdır.</p>
             {/* SEO Keywords - Hidden visually but indexed */}
             <p style={{fontSize: '10px', color: 'transparent', userSelect: 'none', lineHeight: '0', overflow: 'hidden', height: 0}} aria-hidden="true">
-              kombi servis çankırı, çankırı kombi ustası, demirdöküm servis çankırı, çankırı kombi servis, çankırı demirdöküm servis, kombi tamiri çankırı, kombi bakımı çankırı, çankırı ısıtma servisi, vaillant servis çankırı, ariston servis çankırı
+              kombi servis çankırı, çankırı kombi ustası, demirdöküm servis çankırı, çankırı kombi servis, çankırı demirdöküm servis, kombi tamiri çankırı, kombi bakımı çankırı, çankırı ısıtma servisi, vaillant servis çankırı, ariston servis çankırı, cankiri demirdokum servis, cankiri kombi servisi, cankiri demir dokum servis, cankiri demirdokum usta, demirdokum teknik servis cankiri
             </p>
           </div>
         </div>
