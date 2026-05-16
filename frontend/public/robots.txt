@@ -2,7 +2,5 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://cankirikombiustasi.com/sitemap.xml
+Sitemap: https://www.xn--ankrdemirdkmservis-6ub42ale85cba.com/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1

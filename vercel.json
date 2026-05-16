@@ -6,6 +6,19 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "cankirikombiustasi.com"
+        }
+      ],
+      "destination": "https://www.xn--ankrdemirdkmservis-6ub42ale85cba.com/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

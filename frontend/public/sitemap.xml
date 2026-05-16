@@ -6,50 +6,11 @@
 
   <!-- Ana Sayfa -->
   <url>
-    <loc>https://cankirikombiustasi.com/</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.xn--ankrdemirdkmservis-6ub42ale85cba.com/</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Hizmetler Bölümü -->
-  <url>
-    <loc>https://cankirikombiustasi.com/#services</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Hata Kodları Bölümü -->
-  <url>
-    <loc>https://cankirikombiustasi.com/#errors</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Vana Rehberi Bölümü -->
-  <url>
-    <loc>https://cankirikombiustasi.com/#valve-guide</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Hakkımızda Bölümü -->
-  <url>
-    <loc>https://cankirikombiustasi.com/#about</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- İletişim Bölümü -->
-  <url>
-    <loc>https://cankirikombiustasi.com/#contact</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
 </urlset>
