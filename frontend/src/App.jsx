@@ -9,23 +9,67 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [selectedBrand, setSelectedBrand] = useState(null);
 
+  // 404 Sayfa Kontrolü
+  const isNotFound = typeof window !== 'undefined' && 
+    window.location.pathname !== '/' && 
+    window.location.pathname !== '' && 
+    !window.location.pathname.startsWith('/index.html') &&
+    !window.location.pathname.startsWith('/#');
+
   useEffect(() => {
+    // Scroll restoration: Kullanıcı geri döndüğünde konumu korur
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'auto';
+    }
+
+    // PWA Service Worker Kaydı
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1200);
     AOS.init({ duration: 1000, once: true });
     return () => clearTimeout(timer);
   }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  if (isNotFound) {
+    return (
+      <div className="notfound-screen">
+        <div className="notfound-card">
+          <span className="notfound-badge">HATA 404</span>
+          <div className="notfound-num">404</div>
+          <h2>Aradığınız Sayfa Bulunamadı</h2>
+          <p>Ulaşmaya çalıştığınız sayfa taşınmış, silinmiş veya geçici olarak kullanılamıyor olabilir. Ana sayfaya dönerek tüm kombi servis hizmetlerimize ulaşabilirsiniz.</p>
+          <div className="notfound-actions">
+            <a href="/" className="notfound-btn-home">
+              Ana Sayfaya Dön
+            </a>
+            <a href="tel:+905444527090" className="notfound-btn-call">
+              <Phone size={18} /> 0544 452 70 90
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="simple-loader">
-        <div className="spinner-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="loader-brand-box">
+          <div className="loader-logo-wrap">
+            <div className="loader-spinner-ring"></div>
+            <img src="/dd-logo-2966321.png" alt="Çankırı Kombi Ustası" className="loader-logo-img" />
+          </div>
+          <div className="loader-title">Çankırı Kombi Ustası</div>
+          <div className="loader-subtitle">DemirDöküm & Tüm Markalar</div>
+          <div className="loader-progress-bar">
+            <div className="loader-progress-fill"></div>
+          </div>
         </div>
       </div>
     );
@@ -428,10 +472,18 @@ function App() {
           </div>
           <div className="footer-bottom">
             <p>© 2025 Çankırı DemirDöküm Teknik Servis - Kombi Servis. Tüm Hakları Saklıdır.</p>
-            {/* SEO Keywords - Hidden visually but indexed */}
-            <p style={{fontSize: '10px', color: 'transparent', userSelect: 'none', lineHeight: '0', overflow: 'hidden', height: 0}} aria-hidden="true">
-              kombi servis çankırı, çankırı kombi ustası, demirdöküm servis çankırı, çankırı kombi servis, çankırı demirdöküm servis, kombi tamiri çankırı, kombi bakımı çankırı, çankırı ısıtma servisi, vaillant servis çankırı, ariston servis çankırı, cankiri demirdokum servis, cankiri kombi servisi, cankiri demir dokum servis, cankiri demirdokum usta, demirdokum teknik servis cankiri
-            </p>
+            {/* Popüler Aramalar ve Hizmet Etiketleri */}
+            <div style={{marginTop: '16px', display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center'}}>
+              {[
+                'Çankırı Kombi Ustası', 'DemirDöküm Servis', 'Çankırı Kombi Servisi', 'cankiri demirdokum servis', 
+                'cankiri kombi servisi', 'Kombi Tamiri Çankırı', 'Petek Temizleme', 'Vaillant Kombi', 'Ariston Servisi',
+                'cankiri kombici', 'cankirida kombi tamircisi', 'Acil Kombi Servisi', 'cankiri demir dokum'
+              ].map((tag, idx) => (
+                <span key={idx} style={{fontSize: '11px', color: 'rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.06)', padding: '3px 9px', borderRadius: '4px'}}>
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </footer>
