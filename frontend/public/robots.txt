@@ -3,4 +3,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://www.xn--ankrdemirdkmservis-6ub42ale85cba.com/sitemap.xml
-

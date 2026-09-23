@@ -171,7 +171,7 @@ h1, h2, h3, h4, .logo {
 .hero-section {
   padding: 220px 0 160px;
   min-height: 100vh; /* Ekranı tam kaplasın */
-  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('/ddarkaplan.png');
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2)), url('/ddarkaplan.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

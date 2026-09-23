@@ -8,6 +8,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [selectedBrand, setSelectedBrand] = useState(null);
+  const [brandLoading, setBrandLoading] = useState(false);
 
   // 404 Sayfa Kontrolü
   const isNotFound = typeof window !== 'undefined' && 
@@ -17,7 +18,7 @@ function App() {
     !window.location.pathname.startsWith('/#');
 
   useEffect(() => {
-    // Scroll restoration: Kullanıcı geri döndüğünde konumu korur
+    // Scroll restoration: Geri tuşuna basınca kullanıcının eski konumuna dönmesi
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'auto';
     }
@@ -27,12 +28,33 @@ function App() {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
 
+    // Custom loading screen geçişi
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1200);
-    AOS.init({ duration: 1000, once: true });
+      setTimeout(() => {
+        AOS.refresh();
+      }, 100);
+    }, 850);
+
+    // Scroll reveal animasyonları
+    AOS.init({ 
+      duration: 800, 
+      once: true,
+      easing: 'ease-out-cubic',
+      offset: 50
+    });
+
     return () => clearTimeout(timer);
   }, []);
+
+  const handleSelectBrand = (brand) => {
+    setBrandLoading(true);
+    setSelectedBrand(brand);
+    setTimeout(() => {
+      setBrandLoading(false);
+      document.getElementById('brand-detail')?.scrollIntoView({ behavior: 'smooth' });
+    }, 220);
+  };
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -63,10 +85,10 @@ function App() {
         <div className="loader-brand-box">
           <div className="loader-logo-wrap">
             <div className="loader-spinner-ring"></div>
-            <img src="/dd-logo-2966321.png" alt="Çankırı Kombi Ustası" className="loader-logo-img" />
+            <img src="/dd-logo-2966321.png" alt="Çankırı DemirDöküm Servisi" className="loader-logo-img" />
           </div>
-          <div className="loader-title">Çankırı Kombi Ustası</div>
-          <div className="loader-subtitle">DemirDöküm & Tüm Markalar</div>
+          <div className="loader-title">Çankırı DemirDöküm Servisi</div>
+          <div className="loader-subtitle">Kombi Ustası & 7/24 Teknik Servis</div>
           <div className="loader-progress-bar">
             <div className="loader-progress-fill"></div>
           </div>
@@ -211,7 +233,13 @@ function App() {
               </div>
             </div>
             <div className="about-image" data-aos="fade-left">
-               <img src="/usta.png" alt="Çankırı Ariston Teknik Servis Belgesi" style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} />
+               <img 
+                 src="/kombi-teknisyen.webp" 
+                 alt="Çankırı DemirDöküm Kombi Ustası Teknik Servis" 
+                 loading="lazy" 
+                 decoding="async" 
+                 style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)', objectFit: 'cover', maxHeight: '420px'}} 
+               />
             </div>
           </div>
         </div>
@@ -225,17 +253,14 @@ function App() {
             {brands.map((brand, i) => (
               <div key={i} className="service-card" data-aos="fade-up" data-aos-delay={i * 100} style={{borderTop: `4px solid ${brand.color}`}}>
                 <div className="card-img-box">
-                  <img src={brand.img} alt={brand.name} />
+                  <img src={brand.img} alt={brand.name} loading="lazy" decoding="async" />
                 </div>
                 <h3 style={{color: brand.color}}>{brand.name} Servisi</h3>
                 <p>Orijinal yedek parça ve profesyonel arıza tespiti ile {brand.name} garantili bakım hizmeti.</p>
                 <button 
                   className="card-btn-solid" 
                   style={{background: brand.color}}
-                  onClick={() => {
-                    setSelectedBrand(brand);
-                    document.getElementById('brand-detail')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                  onClick={() => handleSelectBrand(brand)}
                 >
                   Detaylı Bilgi <ChevronRight size={16} />
                 </button>
@@ -249,17 +274,33 @@ function App() {
       {selectedBrand && (
         <section id="brand-detail" className="brand-detail-section" data-aos="zoom-in">
           <div className="container">
-            <div className="detail-card-premium" style={{borderTop: `10px solid ${selectedBrand.color}`}}>
-              <div className="detail-header-premium">
-                <div className="header-left">
-                  <img src={selectedBrand.img} alt={selectedBrand.name} className="detail-logo-large" />
-                  <div className="header-text">
-                    <h2>{selectedBrand.name} Kurumsal Teknik Servis</h2>
-                    {selectedBrand.isAuthorized && <span className="authorized-badge-pill">Yetkili Servis Noktası</span>}
+            {brandLoading ? (
+              <div className="skeleton-card" style={{borderTop: `10px solid ${selectedBrand.color}`}}>
+                <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
+                  <div className="skeleton" style={{width: '80px', height: '80px', borderRadius: '16px'}}></div>
+                  <div style={{flex: 1, display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                    <div className="skeleton skeleton-title"></div>
+                    <div className="skeleton skeleton-desc-short"></div>
                   </div>
                 </div>
-                <button className="close-x" onClick={() => setSelectedBrand(null)}><X size={30} /></button>
+                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginTop: '24px'}}>
+                  <div className="skeleton" style={{height: '130px', borderRadius: '12px'}}></div>
+                  <div className="skeleton" style={{height: '130px', borderRadius: '12px'}}></div>
+                  <div className="skeleton" style={{height: '130px', borderRadius: '12px'}}></div>
+                </div>
               </div>
+            ) : (
+              <div className="detail-card-premium" style={{borderTop: `10px solid ${selectedBrand.color}`}}>
+                <div className="detail-header-premium">
+                  <div className="header-left">
+                    <img src={selectedBrand.img} alt={selectedBrand.name} className="detail-logo-large" />
+                    <div className="header-text">
+                      <h2>{selectedBrand.name} Kurumsal Teknik Servis</h2>
+                      {selectedBrand.isAuthorized && <span className="authorized-badge-pill">Yetkili Servis Noktası</span>}
+                    </div>
+                  </div>
+                  <button className="close-x" onClick={() => setSelectedBrand(null)}><X size={30} /></button>
+                </div>
 
               <div className="detail-grid-three">
                 {/* COLUMN 1: BRAND INFO */}
@@ -324,6 +365,7 @@ function App() {
                 </div>
               )}
             </div>
+            )}
           </div>
         </section>
       )}
@@ -353,7 +395,13 @@ function App() {
         <div className="container">
           <div className="guide-grid">
             <div className="guide-image" data-aos="fade-right">
-              <img src="/kombivana .png" alt="Çankırı Kombi Tamiri Vana Bağlantı Rehberi" />
+              <img 
+                src="/petek-bakim.webp" 
+                alt="Çankırı Kombi ve Petek Vana Bağlantı Rehberi" 
+                loading="lazy" 
+                decoding="async" 
+                style={{width: '100%', borderRadius: '16px', boxShadow: 'var(--shadow-md)', objectFit: 'cover'}} 
+              />
             </div>
             <div className="guide-content" data-aos="fade-left">
               <h2>Petek Vanası Nasıl Bağlanmalı?</h2>
