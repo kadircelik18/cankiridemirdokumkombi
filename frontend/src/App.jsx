@@ -88,16 +88,16 @@ function App() {
               <path 
                 className="drop-outline"
                 d="M32 6 C32 6 12 36 12 47 C12 58 20.95 62 32 62 C43.05 62 52 58 52 47 C52 36 32 6 32 6 Z" 
-                stroke="#0284c7" 
-                strokeWidth="2.5" 
+                stroke="#004a99" 
+                strokeWidth="2.8" 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 
               />
               <path 
                 className="drop-inner-gleam"
                 d="M24 40 C22 43 22 49 26 53" 
-                stroke="#38bdf8" 
-                strokeWidth="2" 
+                stroke="#0284c7" 
+                strokeWidth="2.2" 
                 strokeLinecap="round" 
               />
             </svg>
@@ -110,8 +110,8 @@ function App() {
 
           <div className="water-wave-lines">
             <svg className="wave-svg" viewBox="0 0 240 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path className="wave-line line-1" d="M0 14 Q 30 6, 60 14 T 120 14 T 180 14 T 240 14" stroke="#0284c7" strokeWidth="2.2" strokeLinecap="round" />
-              <path className="wave-line line-2" d="M0 14 Q 30 22, 60 14 T 120 14 T 180 14 T 240 14" stroke="#38bdf8" strokeWidth="1.8" strokeOpacity="0.75" strokeLinecap="round" />
+              <path className="wave-line line-1" d="M0 14 Q 30 6, 60 14 T 120 14 T 180 14 T 240 14" stroke="#004a99" strokeWidth="2.5" strokeLinecap="round" />
+              <path className="wave-line line-2" d="M0 14 Q 30 22, 60 14 T 120 14 T 180 14 T 240 14" stroke="#0284c7" strokeWidth="2" strokeOpacity="0.85" strokeLinecap="round" />
             </svg>
           </div>
         </div>
@@ -433,7 +433,9 @@ function App() {
                 <li><CircleCheck size={20} /> Çapraz bağlantı büyük peteklerde daha yüksek verim sağlar.</li>
                 <li><CircleCheck size={20} /> Vana çevresinde su kaçağı kontrolü düzenli yapılmalıdır.</li>
               </ul>
-              <a href="tel:+905444527090" className="btn-orange">Vana Değişimi İçin Ara</a>
+              <a href="tel:+905444527090" className="btn-orange" style={{display: 'inline-flex', alignItems: 'center', gap: '10px'}}>
+                <Phone size={18} /> 0544 452 70 90
+              </a>
             </div>
           </div>
         </div>
