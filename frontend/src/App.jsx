@@ -417,12 +417,16 @@ function App() {
         <div className="container">
           <div className="guide-grid">
             <div className="guide-image" data-aos="fade-right">
-              <img 
-                src="/kombivana.webp" 
-                alt="Çankırı Kombi Tamiri Vana Bağlantı Rehberi" 
-                loading="lazy" 
-                decoding="async" 
-              />
+              <picture>
+                <source type="image/webp" srcSet="/kombivana.webp" />
+                <img 
+                  src="/kombivana.jpg" 
+                  alt="Çankırı Kombi ve Petek Vana Bağlantı Rehberi" 
+                  loading="lazy" 
+                  decoding="async" 
+                  style={{width: '100%', borderRadius: '16px', boxShadow: '0 15px 35px rgba(0,0,0,0.3)', objectFit: 'cover'}}
+                />
+              </picture>
             </div>
             <div className="guide-content" data-aos="fade-left">
               <h2>Petek Vanası Nasıl Bağlanmalı?</h2>
