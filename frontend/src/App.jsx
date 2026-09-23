@@ -81,16 +81,38 @@ function App() {
 
   if (loading) {
     return (
-      <div className="simple-loader">
-        <div className="loader-brand-box">
-          <div className="loader-logo-wrap">
-            <div className="loader-spinner-ring"></div>
-            <img src="/dd-logo-2966321.png" alt="Çankırı DemirDöküm Servisi" className="loader-logo-img" />
+      <div className="water-loader-screen">
+        <div className="water-loader-content">
+          <div className="water-anim-box">
+            <svg className="water-drop-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path 
+                className="drop-outline"
+                d="M32 6 C32 6 12 36 12 47 C12 58 20.95 62 32 62 C43.05 62 52 58 52 47 C52 36 32 6 32 6 Z" 
+                stroke="#0284c7" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+              />
+              <path 
+                className="drop-inner-gleam"
+                d="M24 40 C22 43 22 49 26 53" 
+                stroke="#38bdf8" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+              />
+            </svg>
+            <div className="water-ripples">
+              <span className="water-ripple r1"></span>
+              <span className="water-ripple r2"></span>
+              <span className="water-ripple r3"></span>
+            </div>
           </div>
-          <div className="loader-title">Çankırı DemirDöküm Servisi</div>
-          <div className="loader-subtitle">Kombi Ustası & 7/24 Teknik Servis</div>
-          <div className="loader-progress-bar">
-            <div className="loader-progress-fill"></div>
+
+          <div className="water-wave-lines">
+            <svg className="wave-svg" viewBox="0 0 240 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path className="wave-line line-1" d="M0 14 Q 30 6, 60 14 T 120 14 T 180 14 T 240 14" stroke="#0284c7" strokeWidth="2.2" strokeLinecap="round" />
+              <path className="wave-line line-2" d="M0 14 Q 30 22, 60 14 T 120 14 T 180 14 T 240 14" stroke="#38bdf8" strokeWidth="1.8" strokeOpacity="0.75" strokeLinecap="round" />
+            </svg>
           </div>
         </div>
       </div>
@@ -519,18 +541,6 @@ function App() {
           </div>
           <div className="footer-bottom">
             <p>© 2025 Çankırı DemirDöküm Teknik Servis - Kombi Servis. Tüm Hakları Saklıdır.</p>
-            {/* Popüler Aramalar ve Hizmet Etiketleri */}
-            <div style={{marginTop: '16px', display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center'}}>
-              {[
-                'Çankırı Kombi Ustası', 'DemirDöküm Servis', 'Çankırı Kombi Servisi', 'cankiri demirdokum servis', 
-                'cankiri kombi servisi', 'Kombi Tamiri Çankırı', 'Petek Temizleme', 'Vaillant Kombi', 'Ariston Servisi',
-                'cankiri kombici', 'cankirida kombi tamircisi', 'Acil Kombi Servisi', 'cankiri demir dokum'
-              ].map((tag, idx) => (
-                <span key={idx} style={{fontSize: '11px', color: 'rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.06)', padding: '3px 9px', borderRadius: '4px'}}>
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </footer>

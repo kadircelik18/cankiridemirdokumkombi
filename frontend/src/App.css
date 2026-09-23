@@ -811,11 +811,25 @@ h1, h2, h3, h4, .logo {
   color: var(--secondary);
 }
 
-/* VALVE GUIDE SECTION */
+/* VALVE GUIDE SECTION - PARALLAX BACKGROUND */
 .valve-guide-section {
-  padding: 100px 0;
-  background: var(--secondary);
+  padding: 120px 0;
+  background: linear-gradient(rgba(10, 25, 47, 0.72), rgba(0, 34, 68, 0.78)), url('/ddarkaplan.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
+  position: relative;
+}
+
+.guide-content {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 36px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .guide-grid {
@@ -1573,109 +1587,133 @@ h1, h2, h3, h4, .logo {
   .col-header { justify-content: center; }
 }
 
-/* SIMPLE LOADER STYLES */
-.simple-loader {
+/* SADE ÇİZGİSEL SU ANİMASYONU */
+.water-loader-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, #0f274a 0%, #0a192f 100%);
+  background: radial-gradient(circle at center, #0a1f3d 0%, #040c18 100%);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 99999;
-  transition: opacity 0.5s ease;
+  z-index: 999999;
+  transition: opacity 0.4s ease;
 }
 
-.loader-brand-box {
+.water-loader-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  animation: pulse-slow 2s infinite ease-in-out;
 }
 
-.loader-logo-wrap {
-  width: 90px;
-  height: 90px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 180, 0, 0.3);
+.water-anim-box {
+  position: relative;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 35px rgba(255, 180, 0, 0.25);
-  position: relative;
 }
 
-.loader-logo-img {
-  width: 60px;
-  height: auto;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+.water-drop-icon {
+  width: 44px;
+  height: 44px;
+  animation: water-drop-bob 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.4));
 }
 
-.loader-spinner-ring {
+@keyframes water-drop-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.water-ripples {
   position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border-radius: 28px;
-  border: 3px solid transparent;
-  border-top-color: #ffb400;
-  border-right-color: #004a99;
-  animation: spin 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 20px;
 }
 
-.loader-title {
-  color: #ffffff;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-top: 8px;
+.water-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  border: 1.5px solid #38bdf8;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.loader-subtitle {
-  color: #94a3b8;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-top: -8px;
+.water-ripple.r1 {
+  width: 44px;
+  height: 14px;
+  animation: ripple-spread 2s infinite ease-out;
 }
 
-.loader-progress-bar {
-  width: 180px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 99px;
+.water-ripple.r2 {
+  width: 66px;
+  height: 20px;
+  animation: ripple-spread 2s infinite ease-out 0.65s;
+}
+
+.water-ripple.r3 {
+  width: 88px;
+  height: 26px;
+  animation: ripple-spread 2s infinite ease-out 1.3s;
+}
+
+@keyframes ripple-spread {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.25);
+    opacity: 0;
+  }
+}
+
+.water-wave-lines {
+  width: 160px;
   overflow: hidden;
-  margin-top: 10px;
-  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.loader-progress-fill {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #ffb400, #ff6b00);
-  animation: progress-indeterminate 1.4s infinite ease-in-out;
+.wave-svg {
+  width: 240px;
+  height: 26px;
 }
 
-@keyframes spin {
-  100% { transform: rotate(360deg); }
+.wave-line.line-1 {
+  animation: wave-slide-1 2.2s linear infinite;
 }
 
-@keyframes pulse-slow {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+.wave-line.line-2 {
+  animation: wave-slide-2 2.8s linear infinite reverse;
 }
 
-@keyframes progress-indeterminate {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
+@keyframes wave-slide-1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-60px); }
+}
+
+@keyframes wave-slide-2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-60px); }
 }
 
 /* SKELETON LOADING COMPONENTS */
