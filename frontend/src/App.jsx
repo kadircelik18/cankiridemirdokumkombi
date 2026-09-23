@@ -234,11 +234,11 @@ function App() {
             </div>
             <div className="about-image" data-aos="fade-left">
                <img 
-                 src="/kombi-teknisyen.webp" 
-                 alt="Çankırı DemirDöküm Kombi Ustası Teknik Servis" 
+                 src="/usta.webp" 
+                 alt="Çankırı Ariston Teknik Servis Belgesi" 
                  loading="lazy" 
                  decoding="async" 
-                 style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)', objectFit: 'cover', maxHeight: '420px'}} 
+                 style={{width: '100%', borderRadius: '20px', boxShadow: 'var(--shadow-lg)'}} 
                />
             </div>
           </div>
@@ -396,11 +396,10 @@ function App() {
           <div className="guide-grid">
             <div className="guide-image" data-aos="fade-right">
               <img 
-                src="/petek-bakim.webp" 
-                alt="Çankırı Kombi ve Petek Vana Bağlantı Rehberi" 
+                src="/kombivana.webp" 
+                alt="Çankırı Kombi Tamiri Vana Bağlantı Rehberi" 
                 loading="lazy" 
                 decoding="async" 
-                style={{width: '100%', borderRadius: '16px', boxShadow: 'var(--shadow-md)', objectFit: 'cover'}} 
               />
             </div>
             <div className="guide-content" data-aos="fade-left">
