@@ -10,12 +10,6 @@ function App() {
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [brandLoading, setBrandLoading] = useState(false);
 
-  // 404 Sayfa Kontrolü
-  const isNotFound = typeof window !== 'undefined' && 
-    window.location.pathname !== '/' && 
-    window.location.pathname !== '' && 
-    !window.location.pathname.startsWith('/index.html') &&
-    !window.location.pathname.startsWith('/#');
 
   useEffect(() => {
     // Scroll restoration: Geri tuşuna basınca kullanıcının eski konumuna dönmesi
@@ -33,7 +27,17 @@ function App() {
       setLoading(false);
       setTimeout(() => {
         AOS.refresh();
-      }, 100);
+        // Hash veya alt yolla gelen ziyaretçiyi doğrudan ilgili bölüme kaydır
+        const hash = window.location.hash;
+        const path = window.location.pathname.replace(/^\/|\/$/g, '');
+        const targetId = hash ? hash.replace('#', '') : path;
+        if (targetId) {
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, 120);
     }, 850);
 
     // Scroll reveal animasyonları
@@ -58,26 +62,6 @@ function App() {
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  if (isNotFound) {
-    return (
-      <div className="notfound-screen">
-        <div className="notfound-card">
-          <span className="notfound-badge">HATA 404</span>
-          <div className="notfound-num">404</div>
-          <h2>Aradığınız Sayfa Bulunamadı</h2>
-          <p>Ulaşmaya çalıştığınız sayfa taşınmış, silinmiş veya geçici olarak kullanılamıyor olabilir. Ana sayfaya dönerek tüm kombi servis hizmetlerimize ulaşabilirsiniz.</p>
-          <div className="notfound-actions">
-            <a href="/" className="notfound-btn-home">
-              Ana Sayfaya Dön
-            </a>
-            <a href="tel:+905444527090" className="notfound-btn-call">
-              <Phone size={18} /> 0544 452 70 90
-            </a>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (loading) {
     return (
